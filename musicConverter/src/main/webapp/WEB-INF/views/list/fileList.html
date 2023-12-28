@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/fileList.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -10,7 +11,7 @@
 		<li>
 			<a href="/index">HOME</a>
 		</li>
-		<table id="tbl-board">
+		<table id="tbl-board" class="table">
 			<thead>
 				<tr>
 					<th>가수</th>
@@ -26,7 +27,7 @@
 					<td>
 						<input type="hidden" id="artist" name="artist" th:value="${f.artist}">
 						<input type="hidden" id="title" name="title" th:value="${f.title}">
-						<button type="summit">다운로드</button>
+						<button type="summit" class="btn btn-primary">다운로드</button>
 					</td>
 					</form>
 				</tr>

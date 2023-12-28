@@ -74,7 +74,7 @@ public class UpDownController {
 		}
 		
 	
-		String rename = artist+"_"+title+ext;
+		String rename = title+"_"+artist+ext;
 		System.out.println(rename);
 		try {
 			mFile.transferTo(new File(path+rename));
@@ -83,11 +83,6 @@ public class UpDownController {
 		}
 		
 		
-		/*
-		 * System.out.println("------------"); System.out.println("------------");
-		 * System.out.println("------------"); System.out.println(cs.selectUser(name));
-		 * System.out.println("------------");
-		 */
 		Users username = service.findUser(name);
 		
 		System.out.println(username.getName());
@@ -131,7 +126,7 @@ public class UpDownController {
 		String path = "C:\\musicTest\\";
 		
 		System.out.println("test 파일경로 : " + path);
-		File saveFile = new File(path+artist+"_"+title+".mp3");
+		File saveFile = new File(path+title+"_"+artist+".mp3");
 		String rename = artist+"_"+title+".mp3";
 		try(BufferedInputStream bis = new BufferedInputStream(new FileInputStream(saveFile));
 				ServletOutputStream sos = res.getOutputStream();){

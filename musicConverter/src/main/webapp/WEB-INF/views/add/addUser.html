@@ -46,6 +46,19 @@
                 <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
+                        <div class="form-group">
+							  	<select name="user" id="user" class="form-control" data-sb-validations="required">
+							  	<div class="invalid-feedback" data-sb-feedback="artist:required">A Artist is required.</div>
+							  		<option disabled hidden selected>
+    								사용자
+  									</option>
+									<option value="father">아빠</option>
+									<option value="mother">엄마</option>
+									<option value="dongheon">동헌</option>
+									<option value="juho">주호</option>
+									
+								</select>
+							</div>
                             <div class="form-group">
                                 <!-- Name input-->
                                 <input class="form-control" id="artist" type="text" placeholder="Artist" data-sb-validations="required" />
