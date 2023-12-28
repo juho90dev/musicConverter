@@ -14,6 +14,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +39,6 @@ public class MusicApiController {
 	}
 	
 	@PostMapping("/test")
-	@ResponseBody
 	public String testApi( @RequestParam("artist") String artist, @RequestParam("title") String title,
 			@RequestParam("youtube") String youtube, @RequestParam("user") String user) throws IOException{
 		
@@ -78,9 +78,40 @@ public class MusicApiController {
 		}
 		br.close();
 		urlConnection.disconnect();
-		System.out.println("결과값"+result);
-		return"/";
+		
+		String rePath;
+		rePath = result.toString();
+		rePath.replace("[^\\w']", "");
+		rePath = rePath.replaceAll("\"", "");
+		System.out.println("반환값 : "+result);
+		System.out.println("결과값 : "+rePath);
+		String filePath = convertString(rePath);
+		System.out.println(filePath);
+		System.out.println("------------");
+		filePath = filePath.stripTrailing();
+		System.out.println("------------");
+		System.out.println(filePath);
+		System.out.println("------------");
+		return "test/testPage";
 	}
+	
+	public static String convertString(String val) {
+		StringBuffer sb = new StringBuffer();
+		for (int i=0;i<val.length();i++) {
+			if('\\' == val.charAt(i) && 'u' == val.charAt(i+1)) {
+				Character r = (char) Integer.parseInt(val.substring(i+2, i+6), 16);
+				sb.append(r);
+				i+=5;
+			}else {
+				sb.append(val.charAt(i));
+			}
+		}
+		
+		return sb.toString();
+	}
+	
+
+	
 	
 	@GetMapping("/test2")
 	@ResponseBody
