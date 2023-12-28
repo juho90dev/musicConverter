@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section id="board-container">
+		<h2>게시판 </h2>
+		<li>
+			<a href="/index">HOME</a>
+		</li>
+		<table id="tbl-board">
+			<thead>
+				<tr>
+					<th>가수</th>
+					<th>제목</th>
+					<th>첨부파일</th>
+				</tr>	
+			</thead>
+			<tbody>
+			<tr th:unless="${file.size() == 0}" th:each="f : ${file}">
+					<td th:text="${f.artist}"></td>
+					<td th:text="${f.title}"></td>
+					<form action="/fileDownload" method="post">
+					<td>
+						<input type="hidden" id="artist" name="artist" th:value="${f.artist}">
+						<input type="hidden" id="title" name="title" th:value="${f.title}">
+						<button type="summit">다운로드</button>
+					</td>
+					</form>
+				</tr>
+			</tbody>
+			</table>
+	</section>
+</body>
+
+<style>
+	section#board-container{width:600px; margin:0 auto; text-align:center;}
+	section#board-container h2{margin:10px 0;}
+	table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
+	table#tbl-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
+	/*글쓰기버튼*/
+	input#btn-add{float:right; margin: 0 0 15px;}
+	/*페이지바*/
+	div#pageBar{margin-top:10px; text-align:center; background-color:rgba(0, 188, 212, 0.3);}
+	div#pageBar span.cPage{color: #0066ff;}
+</style>
+
+</html>
