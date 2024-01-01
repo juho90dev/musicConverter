@@ -34,6 +34,7 @@ public class MusicConverterController {
 	public String index2() {
 		return "index2";
 	}
+	
 
 	@PostMapping("/converter")
 	public String converter(Model model, @RequestParam("artist") String artist, @RequestParam("title") String title,
@@ -61,68 +62,14 @@ public class MusicConverterController {
 	public String testPage() {
 		return "test/testPage";
 	}
+	@GetMapping("/juho")
+	public String juhoTest() {
+		return "test/juhoTest";
+	}
 
 	@GetMapping("/addUser")
 	public String mypage() {
 		return "add/addUser";
 	}
-
-	/*
-	 * @PostMapping("/upload") public String upload(MultipartHttpServletRequest
-	 * mtRequest,@RequestParam("artist") String artist, @RequestParam("title")
-	 * String title,
-	 * 
-	 * @RequestParam("userId") String userId, Model m) {
-	 * 
-	 * int users; switch(userId) { case "father": users = 1; break; case "mother":
-	 * users = 2; break; case "dongheon": users = 3; break; case "juho": users = 4;
-	 * break; }
-	 * 
-	 * MultipartFile mFile = mtRequest.getFile("mp3");
-	 * System.out.println(mFile.getName()); System.out.println("------------");
-	 * System.out.println(userId); System.out.println("------------");
-	 * System.out.println("------------");
-	 * 
-	 * 
-	 * String path =
-	 * mtRequest.getServletContext().getRealPath("/resources/upload/test/"); File
-	 * uploadPath = new File(path); System.out.println(path); // 디렉터리 자동 생성
-	 * if(!uploadPath.exists()) uploadPath.mkdirs();
-	 * 
-	 * String oriFileName = ""; String ext = ""; if(mFile != null) { try {
-	 * oriFileName = mFile.getOriginalFilename(); ext =
-	 * oriFileName.substring(oriFileName.lastIndexOf(".")); }catch (Exception e) {
-	 * System.out.println("등록 실패"); } }
-	 * 
-	 * 
-	 * String rename = artist+"_"+title+ext; try { mFile.transferTo(new
-	 * File(path+rename)); }catch(IOException e) { System.out.println("실패"); }
-	 * 
-	 * System.out.println(service.findUser(userId));
-	 * 
-	 * Music music =
-	 * Music.builder().title(title).artist(artist).filePath(path).name(service.
-	 * findUser(userId)).build();
-	 * 
-	 * // System.out.println(music);
-	 * 
-	 * 
-	 * service.insertFile(music);
-	 * 
-	 * return "redirect:/"; }
-	 * 
-	 * 
-	 * @GetMapping("fileList") public String fileList(Model m) {
-	 * 
-	 * List<Music> files = service.selectFile();
-	 * 
-	 * System.out.println(files);
-	 * 
-	 * m.addAttribute("file", service.selectFile());
-	 * 
-	 * model.addObject("files",files); model.setViewName("list/fileList");
-	 * 
-	 * return "list/fileList"; }
-	 */
 
 }

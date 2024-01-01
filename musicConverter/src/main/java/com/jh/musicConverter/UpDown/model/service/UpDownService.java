@@ -15,6 +15,9 @@ public interface UpDownService {
 	
 	// 파일 리스트
 	List<Music> selectFile();
+	
+	// 아빠 리스트
+	List<Music> selectPersonal(Users user);
 
 	// 파일 선택
 	Music selectFiles(String artist, String title);
