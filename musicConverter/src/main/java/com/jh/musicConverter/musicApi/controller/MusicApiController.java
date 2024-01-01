@@ -11,6 +11,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +20,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jh.musicConverter.UpDown.model.service.UpDownService;
+import com.jh.musicConverter.model.vo.Music;
+import com.jh.musicConverter.model.vo.Users;
+
 @Controller
 public class MusicApiController {
+	
+	@Autowired
+	private UpDownService service;
 	
 	/*
 	 * @GetMapping("/testPage") public String testPage() { return "test/testPage"; }
@@ -29,7 +37,7 @@ public class MusicApiController {
 	
 	@PostMapping("/testSubmit")
 	public String testSubmit( @RequestParam("artist") String artist, @RequestParam("title") String title,
-			@RequestParam("youtube") String youtube, @RequestParam("userId") String name){
+			@RequestParam("youtube") String youtube, @RequestParam("user") String name){
 		
 		System.out.println(artist);
 		System.out.println(title);
@@ -92,6 +100,17 @@ public class MusicApiController {
 		System.out.println("------------");
 		System.out.println(filePath);
 		System.out.println("------------");
+		
+		String realPath = "/home/dongheon/ftp/"+user+"/";
+		System.out.println(realPath);
+		
+		Users username = service.findUser(user); 
+		Music music =Music.builder().title(title).artist(artist).filePath(realPath).name(username).build();
+		service.insertFile(music);
+		 
+		
+		
+		
 		return "test/testPage";
 	}
 	

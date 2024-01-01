@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -15,6 +15,11 @@
 <li>
 	<a href="/">HOME</a>
 </li>
+<li>
+	<a href="/test2">데이터 저장</a>
+</li><li>
+	<a href="/juho">juho test</a>
+</li>
 <section class="py-5 my-5">
 	<div class="container">
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
@@ -23,7 +28,7 @@
 					<div class="img-circle text-center mb-3">
 						<img src="${path }/resources/upload/test/${rename}" alt="Image" class="shadow">
 					</div> -->
-					<h4 class="text-center">음악 변환</h4>
+					<h4 class="text-center">API테스트</h4>
 				</div>
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
@@ -35,12 +40,13 @@
 			<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 			<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
 					<h3 class="mb-4">노래 정보</h3>
-					<form action="/test" method="post" name="testF" accept-charset="utf-8">
+					<form action="/testSubmit" method="post" name="apiForm" accept-charset="utf-8">
+					<!-- encoding type 확인하기 -->
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 							  	<select name="user" id="user" class="form-control">
-							  		<option value="none" disabled hidden selected>
+							  		<option disabled hidden selected value="none">
     								사용자
   									</option>
 									<option value="father">아빠</option>
@@ -55,8 +61,9 @@
 					<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>가수</label>
-							  	<input type="text" name="artist" id="artist" class="form-control">
+							  	<label>가수
+							  	<input type="text" id="artist" name="artist" class="form-control">
+                            </label>
 							</div>
 						</div>
 					</div>
@@ -64,7 +71,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 							  	<label>제목</label>
-							  	<input type="text" name="title" id="title" class="form-control">
+							  	<input type="text" name="title" class="form-control">
 							</div>
 							</div>
 						</div>
@@ -72,12 +79,12 @@
 							<div class="col-md-6">
 								<div class="form-group">
 							  	<label>youtube</label>
-							  	<input type="text" name="youtube" id="youtube" class="form-control">
+							  	<input type="text" name="youtube" class="form-control">
 							</div>
 							</div>
 						</div>
 					<div>
-						<button type="submit" class="btn btn-primary" onclick="return check()">전송</button>
+						<button type="submit" class="btn btn-primary" onClick="return check()">전송</button>
 					</div>
 					</form>
 				</div>
@@ -149,6 +156,6 @@ body {
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <body>
 </html>

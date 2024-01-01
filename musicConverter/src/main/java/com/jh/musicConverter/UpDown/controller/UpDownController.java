@@ -96,21 +96,56 @@ public class UpDownController {
 		return "redirect:/";
 	}
 	
-	
-	@GetMapping("fileList")
+	// 전체 음원 파일 리스트
+	@GetMapping("/fileList")
 	public String fileList(Model m) {
 		
 		List<Music> files = service.selectFile();
 		
-		System.out.println(files);
-		
 		m.addAttribute("file", service.selectFile());
-		/*
-		 * model.addObject("files",files); model.setViewName("list/fileList");
-		 */
 		return "list/fileList";
 	}
 	
+	// 아빠 음원 파일 리스트
+	@GetMapping("/fatherList")
+	public String fatherList(Model m) {
+		String name ="father";
+		Users user = service.findUser(name);
+		List<Music> music = service.selectPersonal(user);
+		m.addAttribute("file", music);
+		return "list/fileList";
+	}
+	
+	// 엄마 음원 파일 리스트
+	@GetMapping("/motherList")
+	public String motherList(Model m) {
+		String name = "mother";
+		Users user = service.findUser(name);
+		List<Music> music = service.selectPersonal(user);
+		m.addAttribute("file", music);
+		return "list/fileList";
+	}
+	
+	// 형아 음원 파일 리스트
+	@GetMapping("/dongheonList")
+	public String dongheonList(Model m) {
+		String name = "dongheon";
+		Users user = service.findUser(name);
+		List<Music> music = service.selectPersonal(user);
+		m.addAttribute("file", music);
+		return "list/fileList";
+	}
+	
+	// 주호 음원 파일 리스트
+	@GetMapping("/juhoList")
+	public String juhoList(Model m) {
+		String name = "juho";
+		Users user = service.findUser(name);
+		List<Music> music = service.selectPersonal(user);
+		m.addAttribute("file",music);
+		return "list/fileList";
+		
+	}
 	
 	@PostMapping("/fileDownload")
 	public void fileDownload(@RequestParam("artist") String artist,@RequestParam("title") String title, HttpServletResponse res, 
@@ -123,7 +158,7 @@ public class UpDownController {
 		
 
 		// String path = req.getServletContext().getRealPath("/resources/upload/test/");
-		String path = "C:\\musicTest\\";
+		String path = "C://musicTest/";
 		
 		System.out.println("test 파일경로 : " + path);
 		File saveFile = new File(path+title+"_"+artist+".mp3");
