@@ -101,11 +101,11 @@ public class MusicApiController {
 		System.out.println(filePath);
 		System.out.println("------------");
 		
-		String realPath = "/home/dongheon/ftp/"+user+"/";
-		System.out.println(realPath);
+//		String realPath = "/home/dongheon/ftp/"+user+"/";
+//		System.out.println(realPath);
 		
 		Users username = service.findUser(user); 
-		Music music =Music.builder().title(title).artist(artist).filePath(realPath).name(username).build();
+		Music music =Music.builder().title(title).artist(artist).filePath(filePath).name(username).build();
 		service.insertFile(music);
 		 
 		
@@ -114,6 +114,7 @@ public class MusicApiController {
 		return "test/testPage";
 	}
 	
+	// 유니코드 변환
 	public static String convertString(String val) {
 		StringBuffer sb = new StringBuffer();
 		for (int i=0;i<val.length();i++) {
@@ -130,55 +131,8 @@ public class MusicApiController {
 	}
 	
 
-	
-	
-	@GetMapping("/test2")
-	@ResponseBody
-	public String testApi2() throws IOException{
-		
-		StringBuilder result = new StringBuilder();
-		
-		String urlStr ="http://juhohome.iptime.org:9991/api/mp3?user=juho&url=https://youtube/iD54IrEyiK8&title=흰수염고래&artist=윤도현";
-		System.out.println(urlStr);
-		
-		URL url = new URL(urlStr);
-		HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
-		System.out.println(urlConnection);
-		urlConnection.setRequestMethod("GET");
-		
-		int res = urlConnection.getResponseCode();
-		
-		System.out.println(res);
-		System.out.println(urlConnection.getResponseMessage());
-		
 
-		
-		
-		BufferedReader br;
-		br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
-		String returnLine;
-		
-		StringBuffer sb = new StringBuffer();
-		
-		while((returnLine = br.readLine()) != null) {
-			result.append(returnLine +"\n\r");
-			
-		}
-		br.close();
-		urlConnection.disconnect();
-		System.out.println("결과값"+result);
-		
-		return "/";
-	}
 	
-	@GetMapping("/testGet.do")
-	public String test3 (@RequestParam("artist") String artist, @RequestParam("title") String title,
-	@RequestParam("youtube") String youtube, @RequestParam("userId") String name){
-		System.out.println(artist);
-		System.out.println(title);
-		System.out.println(youtube);
-		System.out.println(name);
-		return "test/testPage";
-	}
+
 
 }

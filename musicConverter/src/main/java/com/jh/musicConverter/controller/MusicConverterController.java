@@ -25,14 +25,10 @@ public class MusicConverterController {
 	@Autowired
 	private ConverterService service;
 
+	// 홈화면
 	@GetMapping("/index")
 	public String index() {
 		return "index";
-	}
-
-	@GetMapping("/index2")
-	public String index2() {
-		return "index2";
 	}
 	
 
@@ -49,6 +45,7 @@ public class MusicConverterController {
 		return "redirect:/";
 	}
 
+	// 사용자 추가
 	@PostMapping("/join")
 	public String join(@RequestParam("name") String name) {
 		Users u = Users.builder().name(name).build();
@@ -61,10 +58,6 @@ public class MusicConverterController {
 	@GetMapping("/testPage")
 	public String testPage() {
 		return "test/testPage";
-	}
-	@GetMapping("/juho")
-	public String juhoTest() {
-		return "test/juhoTest";
 	}
 
 	@GetMapping("/addUser")

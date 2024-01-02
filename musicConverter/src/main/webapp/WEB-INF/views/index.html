@@ -1,221 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<html xmlns:th="http://www.thymeleaf.org">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<title>Music Converter</title>
 </head>
-<body>
-<li>
-	<a href="/fileList">List</a>
-</li>
-<li>
-	<a href="/testPage">apiTest</a>
-</li>
+<body style="background-color:white;">
+<div class="navbar">
+	<a href="/">Home</a>
+	<a href="/musicUpload">MP3 업로드</a>
+	<div class="dropdown">
+		<button class="dropbtn">노래 리스트</button>
+		<div class="dropdown-content">
+			<a href="/fileList">전체</a>
+			<a href="/fatherList">아빠</a>
+			<a href="/motherList">엄마</a>
+			<a href="/dongheonList">동헌</a>
+			<a href="/juhoList">주호</a>
+		</div>
+	</div>
+</div>
 <section class="py-5 my-5">
 	<div class="container">
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 			<div class="profile-tab-nav border-right">
-				<div class="p-4"><!-- 
-					<div class="img-circle text-center mb-3">
-						<img src="${path }/resources/upload/test/${rename}" alt="Image" class="shadow">
-					</div> -->
-					<h4 class="text-center">음악 변환</h4>
+				<div class="p-4">
+					<h4 class="text-center">MP3 변환</h4>
 				</div>
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
-						<i class="fa fa-home text-center mr-1"></i> 
+						<i class="fa fa-home text-center mr-1"></i>
 						노래
-					</a>
-					<a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
-						<i class="fa fa-key text-center mr-1"></i> 
-						태그 수정
-					</a>
-					<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-						<i class="fa fa-user text-center mr-1"></i> 
-						사용자 추가
 					</a>
 				</div>
 			</div>
 			<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 				<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
 					<h3 class="mb-4">노래 정보</h3>
-					<form action="/upload" method="post" enctype="multipart/form-data">
-					<!-- encoding type 확인하기 -->
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-							  	<select name="userId" id="userId" class="form-control">
-							  		<option disabled hidden selected>
-    								사용자
-  									</option>
-									<option value="father">아빠</option>
-									<option value="mother">엄마</option>
-									<option value="dongheon">동헌</option>
-									<option value="juho">주호</option>
-									
-								</select>
-							</div>
-							<div class="form-group">
-							  	<label>가수</label>
-							  	<input type="text" name="artist" class="form-control" placeholder="가수">
-							</div>
-							<div class="form-group">
-							  	<label>제목</label>
-							  	<input type="text" name="title" class="form-control" placeholder="제목">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-							  	<label>첨부 파일</label>
-							  	<input type="file" name="mp3">
-							</div>
-						</div>
-					</div>
-					
-					<div>
-						<button type="submit" class="btn btn-primary">전송</button>
-					</div>
-					</form>
-				</div>
-				<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-					<h3 class="mb-4">태그 수정</h3>
-					<form action="/update" method="post" enctype="multipart/form-data">
+					<form action="/test" method="post" name="testF" accept-charset="utf-8">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>가수</label>
-							  	<input type="text" name="artist" class="form-control" value="spring">
-							</div>
+									<select name="user" id="user" class="form-control">
+										<option value="none" disabled hidden selected>사용자</option>
+										<option value="father">아빠</option>
+										<option value="mother">엄마</option>
+										<option value="dongheon">동헌</option>
+										<option value="juho">주호</option>
+									</select>
+								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>제목</label>
-							  	<input type="text" name="title" class="form-control" value="spring">
-							</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-							  	<label>앨범</label>
-							  	<input type="text" name="album" class="form-control" value="spring">
-							</div>
+									<label>가수</label>
+									<input type="text" name="artist" id="artist" class="form-control">
+								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>장르</label>
-							  	<input type="text" name="genre" class="form-control" value="spring">
-							</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-							  	<label>발매연도</label>
-							  	<input type="text" name="year" class="form-control" value="spring">
-							</div>
+									<label>제목</label>
+									<input type="text" name="title" id="title" class="form-control">
+								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>첨부 파일</label>
-								  	<input type="file" name="image">
+									<label>youtube</label>
+									<input type="text" name="youtube" id="youtube" class="form-control">
 								</div>
 							</div>
 						</div>
 						<div>
-							<button type="submit" class="btn btn-primary">수정</button>
+							<button type="submit" class="btn btn-primary" onclick="return check()">전송</button>
 						</div>
 					</form>
 				</div>
-				<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-					<h3 class="mb-4">Security Settings</h3>
-					<form action="/join" class="form" method="post">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-							  	<label>사용자</label>
-							  	<input type="text" name="name" id="name" class="form-control">
-							</div>
-						</div>
-					</div>
-					
-					<div>
-						<button type="submit" class="btn btn-primary">추가</button>
-					</div>
-					</form>
-				</div><!-- 
-				<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
-					<h3 class="mb-4">Application Settings</h3>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="app-check">
-									<label class="form-check-label" for="app-check">
-									App check
-									</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
-									<label class="form-check-label" for="defaultCheck2">
-									Lorem ipsum dolor sit.
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<button class="btn btn-primary">Update</button>
-						<button class="btn btn-light">Cancel</button>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-					<h3 class="mb-4">Notification Settings</h3>
-					<div class="form-group">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="notification1">
-							<label class="form-check-label" for="notification1">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum accusantium accusamus, neque cupiditate quis
-							</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="notification2" >
-							<label class="form-check-label" for="notification2">
-								hic nesciunt repellat perferendis voluptatum totam porro eligendi.
-							</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="notification3" >
-							<label class="form-check-label" for="notification3">
-								commodi fugiat molestiae tempora corporis. Sed dignissimos suscipit
-							</label>
-						</div>
-					</div>
-					<div>
-						<button class="btn btn-primary">Update</button>
-						<button class="btn btn-light">Cancel</button>
-					</div>
-				</div> -->
 			</div>
 		</div>
 	</div>
 </section>
+
+
+<script>
+function check(){
+	if(testF.artist.value.length == 0 ){
+		alert("가수를 적어주세요.");
+		testF.artist.focus();
+		return false;
+	}
+	if(testF.title.value.length == 0){
+		alert("제목을 적어주세요.");
+		testF.title.focus();
+		return false;
+	}
+	if(testF.youtube.value.length == 0){
+		alert("유튜브 주소를 적어주세요.");
+		testF.youtube.focus();
+		return false;
+	}
+	
+	var user = document.getElementById('user');
+	if(user.value == "none") {
+		alert("사용자를 선택해 주세요");
+		return false;
+	}
+}
+</script>
 <style>
+.navbar {
+	background-color: #333;
+}
+.navbar a {
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
 body {
 	background: #f9f9f9;
 	font-family: "Roboto", sans-serif;
@@ -243,6 +199,7 @@ body {
 	border-radius: 0;
 	color: #333;
 }
+
 .nav-pills a.nav-link i {
 	width: 20px;
 }
@@ -254,9 +211,5 @@ body {
 	border: 5px solid #fff;
 }
 </style>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <body>
 </html>

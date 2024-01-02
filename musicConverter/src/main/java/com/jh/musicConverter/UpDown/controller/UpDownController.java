@@ -39,6 +39,12 @@ public class UpDownController {
 	@Autowired
 	private UpDownService service;
 	
+	@GetMapping("/musicUpload")
+	public String musicUpload() {
+		return "add/musicFileUpload";
+	}
+	
+	
 	@PostMapping("/upload")
 	public String upload(MultipartHttpServletRequest mtRequest,@RequestParam("artist") String artist, @RequestParam("title") String title, 
 			@RequestParam("userId") String name, Model m) {
@@ -148,21 +154,21 @@ public class UpDownController {
 	}
 	
 	@PostMapping("/fileDownload")
-	public void fileDownload(@RequestParam("artist") String artist,@RequestParam("title") String title, HttpServletResponse res, 
+	public void fileDownload(@RequestParam("artist") String artist,@RequestParam("title") String title, @RequestParam("filePath") String filePath, HttpServletResponse res, 
 			HttpServletRequest req, 
 			@RequestHeader(value="User-agent") String header) {
 		System.out.println("----------");
 		System.out.println(artist);
 		System.out.println(title);
+		System.out.println(filePath);
 		System.out.println("----------");
 		
 
-		// String path = req.getServletContext().getRealPath("/resources/upload/test/");
 		String path = "C://musicTest/";
 		
-		System.out.println("test 파일경로 : " + path);
-		File saveFile = new File(path+title+"_"+artist+".mp3");
-		String rename = artist+"_"+title+".mp3";
+		System.out.println("test 파일경로 : " + filePath);
+		File saveFile = new File(filePath);
+		String rename = artist+"-"+title+".mp3";
 		try(BufferedInputStream bis = new BufferedInputStream(new FileInputStream(saveFile));
 				ServletOutputStream sos = res.getOutputStream();){
 			boolean isMS = header.contains("Trident")||header.contains("MSIE");
