@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/fileList.css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<title>Music Converter</title>
-</head>
+<div th:replace="common/header :: header"></div>
 <body style="background-color:white;">
-<div class="navbar">
-	<a href="/">Home</a>
-	<a href="/musicUpload">MP3 업로드</a>
-	<div class="dropdown">
-		<button class="dropbtn">노래 리스트</button>
-		<div class="dropdown-content">
-			<a href="/fileList">전체</a>
-			<a href="/fatherList">아빠</a>
-			<a href="/motherList">엄마</a>
-			<a href="/dongheonList">동헌</a>
-			<a href="/juhoList">주호</a>
-		</div>
-	</div>
-</div>
 <section class="py-5 my-5">
 	<div class="container">
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
@@ -44,12 +17,12 @@
                         <td class="word" th:text="${f.artist}"></td>
                         <td class="word" th:text="${f.title}"></td>
                         <form action="/fileDownload" method="post">
-                        <td>
-                            <input type="hidden" id="artist" name="artist" th:value="${f.artist}">
-                            <input type="hidden" id="title" name="title" th:value="${f.title}">
-                            <input type="hidden" id="name" name="filePath" th:value="${f.filePath}">
-                            <button type="summit" class="btn btn-primary">다운로드</button>
-                        </td>
+                        	<td>
+                            	<input type="hidden" id="artist" name="artist" th:value="${f.artist}">
+                            	<input type="hidden" id="title" name="title" th:value="${f.title}">
+                            	<input type="hidden" id="name" name="filePath" th:value="${f.filePath}">
+                            	<button type="summit" class="btn btn-primary">다운로드</button>
+                        	</td>
                         </form>
                         <form action="/fileInfo">
                             <td>

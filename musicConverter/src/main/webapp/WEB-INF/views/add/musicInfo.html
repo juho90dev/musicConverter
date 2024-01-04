@@ -1,0 +1,60 @@
+<div th:replace="common/header :: header"></div>
+<body>
+<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+					<h3 class="mb-4">태그 수정</h3>
+					<form action="/update" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							  	<label>가수</label>
+							  	<input type="text" name="artist" class="form-control" value="spring">
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							  	<label>제목</label>
+							  	<input type="text" name="title" class="form-control" value="spring">
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							  	<label>앨범</label>
+							  	<input type="text" name="album" class="form-control" value="spring">
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							  	<label>장르</label>
+							  	<input type="text" name="genre" class="form-control" value="spring">
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							  	<label>발매연도</label>
+							  	<input type="text" name="year" class="form-control" value="spring">
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>첨부 파일</label>
+								  	<input type="file" name="image">
+								</div>
+							</div>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-primary">수정</button>
+						</div>
+					</form>
+				</div>
+</body>
+</html>
