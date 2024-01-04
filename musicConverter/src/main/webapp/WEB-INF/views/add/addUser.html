@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<html xmlns:th="http://www.thymeleaf.org">
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<title>Insert title here</title>
-</head>
+<div th:replace="common/header :: header"></div>
 <body>
-<li>
-	<a href="/index">HOME</a>
-</li>
-<li>
-	<a href="/fileList">List</a>
-</li>
-<li>
-	<a href="/testPage">apiTest</a>
-</li>
 <section class="py-5 my-5">
 	<div class="container">
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
@@ -28,7 +9,7 @@
 				</div>
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
-						<i class="fa fa-user text-center mr-1"></i> 
+						<i class="fa fa-user text-center mr-1"></i>
 						사용자 추가
 					</a>
 				</div>
@@ -37,18 +18,17 @@
 				<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
 					<h4 class="mb-4">사용자를 추가하세요</h4>
 					<form action="/join" class="form" method="post">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-							  	<label>사용자 이름</label>
-							  	<input type="text" name="name" id="name" class="form-control">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>사용자 이름</label>
+									<input type="text" name="name" id="name" class="form-control">
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div>
-						<button type="submit" class="btn btn-primary">추가</button>
-					</div>
+						<div>
+							<button type="submit" class="btn btn-primary">추가</button>
+						</div>
 					</form>
 				</div>
 			</div>
