@@ -3,19 +3,22 @@
 <section class="py-5 my-5">
 	<div class="container">
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+			<h3></h3>
 			<table id="tbl-board" class="tableStyle">
                 <thead>
                     <tr>
                         <th>가수</th>
                         <th>제목</th>
                         <th>첨부파일</th>
-                        <th>태그 작성</th>
+                        <th>삭제</th>
                     </tr>	
                 </thead>
                 <tbody>
                     <tr th:unless="${file.size() == 0}" th:each="f : ${file}">
                         <td class="word" th:text="${f.artist}"></td>
-                        <td class="word" th:text="${f.title}"></td>
+                        <td class="word">
+                        	<a th:href="@{/fileInfos( id=${f.musicId} )}" th:text="${f.title}"></a>
+                        </td>
                         <form action="/fileDownload" method="post">
                         	<td>
                             	<input type="hidden" id="artist" name="artist" th:value="${f.artist}">
@@ -24,12 +27,10 @@
                             	<button type="summit" class="btn btn-primary">다운로드</button>
                         	</td>
                         </form>
-                        <form action="/fileInfo">
+                        <form action="/deleteFile">
                             <td>
-                                <input type="hidden" id="artist" name="artist" th:value="${f.artist}">
-                                <input type="hidden" id="title" name="title" th:value="${f.title}">
-                                <input type="hidden" id="name" name="filePath" th:value="${f.filePath}">
-                                <button type="summit" class="btn btn-primary">태그 작성</button>
+                            	<input type="hidden" id="musicId" name="musicId" th:value="${f.musicId}">
+                            	<button type="summit" class="btn btn-primary">삭제</button>
                             </td>
                         </form>
                     </tr>

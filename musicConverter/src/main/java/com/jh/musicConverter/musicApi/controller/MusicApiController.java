@@ -30,9 +30,7 @@ public class MusicApiController {
 	@Autowired
 	private UpDownService service;
 	
-	/*
-	 * @GetMapping("/testPage") public String testPage() { return "test/testPage"; }
-	 */
+
 	
 	
 	@PostMapping("/testSubmit")
@@ -101,9 +99,6 @@ public class MusicApiController {
 		System.out.println(filePath);
 		System.out.println("------------");
 		
-//		String realPath = "/home/dongheon/ftp/"+user+"/";
-//		System.out.println(realPath);
-		
 		Users username = service.findUser(user); 
 		Music music =Music.builder().title(title).artist(artist).filePath(filePath).name(username).build();
 		service.insertFile(music);
@@ -111,7 +106,7 @@ public class MusicApiController {
 		
 		
 		
-		return "test/testPage";
+		return "redirect:/";
 	}
 	
 	// 유니코드 변환

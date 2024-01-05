@@ -12,6 +12,140 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <title>Music Converter</title>
+<style>
+.tableStyle {
+	table-layout: fixed;
+}
+.word { 
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+section#board-container {
+    width:600px;
+    margin:0 auto;
+    text-align:center;
+}
+section#board-container h2 {
+    margin:10px 0;
+}
+table#tbl-board {
+    width:100%;
+    margin:0 auto;
+    border:1px solid black;
+    border-collapse:collapse;
+    clear:both;
+}
+    
+table#tbl-board th, table#tbl-board td {
+    border:1px solid;
+    padding: 5px 0;
+    text-align:center;
+} 
+
+/*글쓰기버튼*/
+input#btn-add {
+    float:right;
+    margin: 0 0 15px;
+}
+
+
+
+.navbar {
+	background-color: #333;
+    position: sticky;
+    top: 0px; /* 도달했을때 고정시킬 위치 */
+}
+.navbar a {
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+body {
+	background: #f9f9f9;
+	font-family: "Roboto", sans-serif;
+}
+
+.shadow {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.profile-tab-nav {
+	min-width: 250px;
+}
+
+.tab-content {
+	flex: 1;
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.nav-pills a.nav-link {
+	padding: 15px 20px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	color: #333;
+}
+
+.nav-pills a.nav-link i {
+	width: 20px;
+}
+
+.img-circle img {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	border: 5px solid #fff;
+}
+</style>
+</style>
 </head>
 <div class="navbar">
 	<a href="/">Home</a>
