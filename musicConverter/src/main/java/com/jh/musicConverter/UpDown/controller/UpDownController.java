@@ -149,6 +149,13 @@ public class UpDownController {
 		
 	}
 	
+	@GetMapping("/fileInfos")
+	public String fileInfos(@RequestParam int id, Model model) {
+		System.out.println(id);
+		return "add/musicInfo";
+	}
+	
+	
 	@PostMapping("/fileDownload")
 	public void fileDownload(@RequestParam("artist") String artist,@RequestParam("title") String title, @RequestParam("filePath") String filePath, HttpServletResponse res, 
 			HttpServletRequest req, 
