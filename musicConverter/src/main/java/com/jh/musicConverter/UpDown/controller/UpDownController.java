@@ -48,11 +48,7 @@ public class UpDownController {
 	@PostMapping("/upload")
 	public String upload(MultipartHttpServletRequest mtRequest,@RequestParam("artist") String artist, @RequestParam("title") String title, 
 			@RequestParam("userId") String name, Model m) {
-		/*
-		 * int users; switch(userId) { case "father": users = 1; break; case "mother":
-		 * users = 2; break; case "dongheon": users = 3; break; case "juho": users = 4;
-		 * break; }
-		 */
+
 		MultipartFile mFile = mtRequest.getFile("mp3");
 		System.out.println(mFile.getName());
 		System.out.println("------------");

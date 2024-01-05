@@ -1,0 +1,82 @@
+<div th:replace="common/header :: header"></div>
+<body>
+<section class="py-5 my-5">
+	<div class="container">
+		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+			<div class="profile-tab-nav border-right">
+				<div class="p-4">
+					<h4 class="text-center">음악 변환</h4>
+				</div>
+				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
+						<i class="fa fa-user text-center mr-1"></i>
+						사용자 추가
+					</a>
+				</div>
+			</div>
+			<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+				<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+					<h4 class="mb-4">사용자를 추가하세요</h4>
+					<form action="/join" class="form" method="post">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>사용자 이름</label>
+									<input type="text" name="name" id="name" class="form-control">
+								</div>
+							</div>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-primary">추가</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<style>
+body {
+	background: #f9f9f9;
+	font-family: "Roboto", sans-serif;
+}
+
+.shadow {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.profile-tab-nav {
+	min-width: 250px;
+}
+
+.tab-content {
+	flex: 1;
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.nav-pills a.nav-link {
+	padding: 15px 20px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	color: #333;
+}
+.nav-pills a.nav-link i {
+	width: 20px;
+}
+
+.img-circle img {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	border: 5px solid #fff;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<body>
+</html>

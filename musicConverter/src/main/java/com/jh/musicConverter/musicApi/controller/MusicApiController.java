@@ -46,7 +46,7 @@ public class MusicApiController {
 		return "test/testPage";
 	}
 	
-	@PostMapping("/test")
+	@PostMapping("/musicApi")
 	public String testApi( @RequestParam("artist") String artist, @RequestParam("title") String title,
 			@RequestParam("youtube") String youtube, @RequestParam("user") String user) throws IOException{
 		
