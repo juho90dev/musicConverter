@@ -1,0 +1,176 @@
+<div th:replace="common/header :: header"></div>
+<body style="background-color:white;">
+<section class="py-5 my-5">
+	<div class="container">
+		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+			<table id="tbl-board" class="tableStyle">
+                <thead>
+                    <tr>
+                        <th>가수</th>
+                        <th>제목</th>
+                        <th>첨부파일</th>
+                        <th>태그 작성</th>
+                    </tr>	
+                </thead>
+                <tbody>
+                    <tr th:unless="${file.size() == 0}" th:each="f : ${file}">
+                        <td class="word" th:text="${f.artist}"></td>
+                        <td class="word" th:text="${f.title}"></td>
+                        <form action="/fileDownload" method="post">
+                        	<td>
+                            	<input type="hidden" id="artist" name="artist" th:value="${f.artist}">
+                            	<input type="hidden" id="title" name="title" th:value="${f.title}">
+                            	<input type="hidden" id="name" name="filePath" th:value="${f.filePath}">
+                            	<button type="summit" class="btn btn-primary">다운로드</button>
+                        	</td>
+                        </form>
+                        <form action="/fileInfo">
+                            <td>
+                                <input type="hidden" id="artist" name="artist" th:value="${f.artist}">
+                                <input type="hidden" id="title" name="title" th:value="${f.title}">
+                                <input type="hidden" id="name" name="filePath" th:value="${f.filePath}">
+                                <button type="summit" class="btn btn-primary">태그 작성</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+                </table>
+		</div>
+	</div>
+</section>
+
+<style>
+.tableStyle {
+	table-layout: fixed;
+}
+.word { 
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+section#board-container {
+    width:600px;
+    margin:0 auto;
+    text-align:center;
+}
+section#board-container h2 {
+    margin:10px 0;
+}
+table#tbl-board {
+    width:100%;
+    margin:0 auto;
+    border:1px solid black;
+    border-collapse:collapse;
+    clear:both;
+}
+    
+table#tbl-board th, table#tbl-board td {
+    border:1px solid;
+    padding: 5px 0;
+    text-align:center;
+} 
+
+/*글쓰기버튼*/
+input#btn-add {
+    float:right;
+    margin: 0 0 15px;
+}
+
+
+
+.navbar {
+	background-color: #333;
+    position: sticky;
+    top: 0px; /* 도달했을때 고정시킬 위치 */
+}
+.navbar a {
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+body {
+	background: #f9f9f9;
+	font-family: "Roboto", sans-serif;
+}
+
+.shadow {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.profile-tab-nav {
+	min-width: 250px;
+}
+
+.tab-content {
+	flex: 1;
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.nav-pills a.nav-link {
+	padding: 15px 20px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	color: #333;
+}
+
+.nav-pills a.nav-link i {
+	width: 20px;
+}
+
+.img-circle img {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	border: 5px solid #fff;
+}
+</style>
+<body>
+</html>

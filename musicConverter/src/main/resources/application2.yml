@@ -25,6 +25,17 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
+            
+  mvc:
+    view:
+     prefix: /WEB-INF/views/
+     suffix: .html
+    
+    
+  thymeleaf:
+    prefix: /WEB-INF/views/
+    suffix: .html
+    static-path-pattern: /resources/**
     
   jpa:
     generate-ddl: true

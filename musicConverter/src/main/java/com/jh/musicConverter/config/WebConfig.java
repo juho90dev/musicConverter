@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer{
 	
 	private String connectPath = "fileDownload/**";
-	private String resourcePath = "file:///C:\\musicTest/";
+	private String resourcePath = "file://./";
 	
 	
 	@Override

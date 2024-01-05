@@ -28,7 +28,7 @@ public class MusicConverterController {
 	// 홈화면
 	@GetMapping("/index")
 	public String index() {
-		return "index";
+		return "redirect:/";
 	}
 	
 
