@@ -1,5 +1,5 @@
 # musicConverter
-musicConverter
+API를 활용한 음악 변환
 
 ### 사용 기술
 * java 17
