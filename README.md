@@ -1,4 +1,9 @@
 # musicConverter
 musicConverter
 
-<h2>Music Converter</h2>
+## 사용 기술
+* java 17
+* Spring Boot 3.2.0
+  - maven
+* Oraclel Database
+* Thymeleaf
