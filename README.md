@@ -5,5 +5,5 @@ musicConverter
 * java 17
 * Spring Boot 3.2.0
   - maven
-* Oraclel Database
+* Oracle Database
 * Thymeleaf
