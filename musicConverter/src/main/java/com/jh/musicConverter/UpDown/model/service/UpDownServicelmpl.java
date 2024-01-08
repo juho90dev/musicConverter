@@ -54,5 +54,15 @@ public class UpDownServicelmpl implements UpDownService {
 	public Music selectFiles(String artist, String title) {
 		return mdao.findByArtistAndTitle(artist, title);
 	}
+	
+	@Override
+	public Music findById(int id) {
+		return dao.findById(id);
+	}
+	
+	@Override
+	public Music deleteById(int id) {
+		return dao.deleteById(id);
+	}
 
 }

@@ -76,7 +76,7 @@ public class UpDownController {
 		}
 		
 	
-		String rename = title+"_"+artist+ext;
+		String rename = title+"-"+artist+ext;
 		System.out.println(rename);
 		try {
 			mFile.transferTo(new File(path+rename));
@@ -88,7 +88,7 @@ public class UpDownController {
 		Users username = service.findUser(name);
 		
 		System.out.println(username.getName());
-		Music music = Music.builder().title(title).artist(artist).filePath(path).name(service.findUser(name)).build();
+		Music music = Music.builder().title(title).artist(artist).filePath(path+rename).name(service.findUser(name)).build();
 		
 		// System.out.println(music);
 
@@ -149,10 +149,51 @@ public class UpDownController {
 		
 	}
 	
+	// 음원 정보
 	@GetMapping("/fileInfos")
 	public String fileInfos(@RequestParam int id, Model model) {
 		System.out.println(id);
 		return "add/musicInfo";
+	}
+	
+	@GetMapping("/testDelete")
+	public String testDelete(@RequestParam int id, @RequestParam String name) {
+		System.out.println(id);
+		Music mu = service.findById(id);
+		System.out.println(mu.getFilePath());
+		String df = mu.getFilePath();
+		String dt = mu.getTitle();
+		String da = mu.getArtist();
+		System.out.println("------------");
+		System.out.println(name);
+//		File file = new File(df);
+//		if( file.exists() ){
+//    		if(file.delete()){
+//    			System.out.println("파일삭제 성공");
+//    		}else{
+//    			System.out.println("파일삭제 실패");
+//    		}
+//    	}else{
+//    		System.out.println("파일이 존재하지 않습니다.");
+//    	}
+		return "redirect:/"+name+"List";
+	}
+	@PostMapping("/testDeleteP")
+	public String testDeleteP(@RequestParam int musicId, @RequestParam String name, @RequestParam String filePath) {
+		System.out.println(musicId);
+		System.out.println(name);
+		File file = new File(filePath);
+		if( file.exists() ){
+			if(file.delete()){
+				System.out.println("파일삭제 성공");
+			}else{
+				System.out.println("파일삭제 실패");
+			}
+		}else{
+			System.out.println("파일이 존재하지 않습니다.");
+		}
+		service.deleteById(musicId);
+		return "redirect:/"+name+"List";
 	}
 	
 	

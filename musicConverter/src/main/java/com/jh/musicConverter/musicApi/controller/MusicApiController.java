@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +46,7 @@ public class MusicApiController {
 	}
 	
 	@PostMapping("/musicApi")
-	public String testApi( @RequestParam("artist") String artist, @RequestParam("title") String title,
+	public String testApi(Model model, @RequestParam("artist") String artist, @RequestParam("title") String title,
 			@RequestParam("youtube") String youtube, @RequestParam("user") String user) throws IOException{
 		
 		System.out.println(artist);
@@ -102,11 +103,28 @@ public class MusicApiController {
 		Users username = service.findUser(user); 
 		Music music =Music.builder().title(title).artist(artist).filePath(filePath).name(username).build();
 		service.insertFile(music);
-		 
+		
+		
+		String msg="";
+		String loc="";
+		
+		try {
+			service.insertFile(music);
+			msg = "YOUTUBE 변환 완료!";
+			loc = "/index";
+		}catch(Exception e) {
+			msg = "YOUTUBE 변환 실패!";
+			loc = "/index";
+			
+		}
+				
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
 		
 		
 		
-		return "redirect:/";
 	}
 	
 	// 유니코드 변환

@@ -23,14 +23,17 @@
                         	<td>
                             	<input type="hidden" id="artist" name="artist" th:value="${f.artist}">
                             	<input type="hidden" id="title" name="title" th:value="${f.title}">
-                            	<input type="hidden" id="name" name="filePath" th:value="${f.filePath}">
+                            	<input type="hidden" id="filePath" name="filePath" th:value="${f.filePath}">
                             	<button type="summit" class="btn btn-primary">다운로드</button>
                         	</td>
                         </form>
-                        <form action="/deleteFile">
+                        <form action="/testDeleteP" method="post">
                             <td>
+                            	<!-- <a th:href="@{/testDelete( id=${f.musicId}, name=${f.name.name} )}" th:text="삭제"></a> -->
+                            	<input type="hidden" id="filePath" name="filePath" th:value="${f.filePath}">
                             	<input type="hidden" id="musicId" name="musicId" th:value="${f.musicId}">
-                            	<button type="summit" class="btn btn-primary">삭제</button>
+                            	<input type="hidden" id="name" name="name" th:value="${f.name.name}">
+                            	<button type="summit" class="btn btn-primary" onclick="return delFile();">삭제</button>
                             </td>
                         </form>
                     </tr>
@@ -39,7 +42,16 @@
 		</div>
 	</div>
 </section>
-
+<script>
+function delFile(){
+    let isUpdate=confirm("정말 삭제하시겠습니까?");
+    if(isUpdate){
+        return true;
+    }else {
+        return false;
+    }
+}
+</script>
 <style>
 .tableStyle {
 	table-layout: fixed;
