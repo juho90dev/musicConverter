@@ -22,4 +22,10 @@ public interface UpDownService {
 	// 파일 선택
 	Music selectFiles(String artist, String title);
 	
+	// 음원 검색
+	Music findById(int id);
+	
+	// 음원 삭제
+	Music deleteById(int id);
+	
 }

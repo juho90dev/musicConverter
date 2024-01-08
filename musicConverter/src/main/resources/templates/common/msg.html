@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script th:inline="javascript">
+	var message = [[${msg}]];
+	alert(message);
+	location.replace([[${loc}]]);
+</script>
+</head>
+</html>

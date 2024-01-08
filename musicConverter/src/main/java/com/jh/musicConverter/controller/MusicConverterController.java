@@ -31,6 +31,19 @@ public class MusicConverterController {
 		return "redirect:/";
 	}
 	
+	
+	@GetMapping("/testModal")
+	public String modal(Model model) {
+		
+		String msg="";
+		String loc="";
+		msg = "변환 성공";
+		loc = "index";
+			
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		return "common/msg";
+	}
 
 	@PostMapping("/converter")
 	public String converter(Model model, @RequestParam("artist") String artist, @RequestParam("title") String title,
