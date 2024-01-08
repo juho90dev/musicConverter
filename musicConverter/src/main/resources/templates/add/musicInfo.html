@@ -1,62 +1,71 @@
 <div th:replace="common/header :: header"></div>
-<body>
-<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-					<h3 class="mb-4">태그 수정</h3>
-					<form action="/update" method="post" enctype="multipart/form-data">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-							  	<label>가수</label>
-							  	<input type="text" name="artist" class="form-control" value="spring">
-							</div>
-							</div>
+<body style="background-color:white;">
+<section class="py-5 my-5">
+		<div class="container">
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<span th:if="${info.albumCover != null}">
+								<img src="${info.albumCover}" alt="Image" class="shadow">
+							</span>
+							<span th:if="${info.albumCover == null}">
+								<img src="assets/img/image.png" alt="Image" class="shadow">
+							</span>
 						</div>
+						<h2 th:text="${info.artist}" style="text-align:center"></h2>
+					</div>
+				</div>
+				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+						<h3 class="mb-4">음악정보</h3>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>제목</label>
-							  	<input type="text" name="title" class="form-control" value="spring">
+								  	<label>가수</label>
+								  	<input type="text" class="form-control" th:value="${info.artist}">
+								</div>
 							</div>
-							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>앨범</label>
-							  	<input type="text" name="album" class="form-control" value="spring">
+								  	<label>제목</label>
+								  	<input type="text" class="form-control" th:value="${info.title}">
+								</div>
 							</div>
-							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>장르</label>
-							  	<input type="text" name="genre" class="form-control" value="spring">
+								  	<label>앨범</label>
+								  	<input type="text" class="form-control" th:value="${info.album}">
+								</div>
 							</div>
-							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-							  	<label>발매연도</label>
-							  	<input type="text" name="year" class="form-control" value="spring">
+								  	<label>장르</label>
+								  	<input type="text" class="form-control" th:value="${info.genre}">
+								</div>
 							</div>
-							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>첨부 파일</label>
-								  	<input type="file" name="image">
+								  	<label>발매연도</label>
+								  	<input type="text" class="form-control" th:value="${info.year}">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+								  	<label>가사</label>
+									<textarea class="form-control" rows="4"></textarea>
 								</div>
 							</div>
 						</div>
 						<div>
-							<button type="submit" class="btn btn-primary">수정</button>
+							<button class="btn btn-primary">Update</button>
+							<button class="btn btn-light">Cancel</button>
 						</div>
-					</form>
+					</div>
 				</div>
-
+			</div>
+		</div>
+	</section>
 
 </body>
 </html>

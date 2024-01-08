@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jh.musicConverter.UpDown.model.service.UpDownService;
 import com.jh.musicConverter.model.service.ConverterService;
@@ -151,12 +152,15 @@ public class UpDownController {
 	
 	// 음원 정보
 	@GetMapping("/fileInfos")
-	public String fileInfos(@RequestParam int id, Model model) {
+	public ModelAndView fileInfos(@RequestParam int id, ModelAndView mv) {
 		System.out.println(id);
-		return "add/musicInfo";
+		Music info = service.findById(id);
+		mv.addObject("info", info);
+		mv.setViewName("add/musicInfo");
+		return mv;
 	}
 	
-	@GetMapping("/testDelete")
+	@GetMapping("/deleteFile")
 	public String testDelete(@RequestParam int id, @RequestParam String name) {
 		System.out.println(id);
 		Music mu = service.findById(id);
