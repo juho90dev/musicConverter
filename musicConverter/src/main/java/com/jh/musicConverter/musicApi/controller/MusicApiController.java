@@ -92,6 +92,8 @@ public class MusicApiController {
 		rePath = rePath.replaceAll("\"", "");
 		System.out.println("반환값 : "+result);
 		System.out.println("결과값 : "+rePath);
+		
+		// 유니코드 변환
 		String filePath = convertString(rePath);
 		System.out.println(filePath);
 		System.out.println("------------");

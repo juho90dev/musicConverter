@@ -1,71 +1,70 @@
 <div th:replace="common/header :: header"></div>
 <body style="background-color:white;">
 <section class="py-5 my-5">
-		<div class="container">
-			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
-				<div class="profile-tab-nav border-right">
-					<div class="p-4">
-						<div class="img-circle text-center mb-3">
-							<span th:if="${info.albumCover != null}">
-								<img src="${info.albumCover}" alt="Image" class="shadow">
-							</span>
-							<span th:if="${info.albumCover == null}">
-								<img src="assets/img/image.png" alt="Image" class="shadow">
-							</span>
-						</div>
-						<h2 th:text="${info.artist}" style="text-align:center"></h2>
+	<div class="container">
+		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+			<div class="profile-tab-nav border-right">
+				<div class="p-4">
+					<div class="img-circle text-center mb-3">
+						<span th:if="${info.albumCover != null}">
+							<img src="${info.albumCover}" alt="Image" class="shadow">
+						</span>
+						<span th:if="${info.albumCover == null}">
+							<img src="assets/img/image.png" alt="Image" class="shadow">
+						</span>
 					</div>
+					<h2 th:text="${info.artist}" style="text-align:center"></h2>
 				</div>
-				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
-					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
-						<h3 class="mb-4">음악정보</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>가수</label>
-								  	<input type="text" class="form-control" th:value="${info.artist}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>제목</label>
-								  	<input type="text" class="form-control" th:value="${info.title}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>앨범</label>
-								  	<input type="text" class="form-control" th:value="${info.album}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>장르</label>
-								  	<input type="text" class="form-control" th:value="${info.genre}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>발매연도</label>
-								  	<input type="text" class="form-control" th:value="${info.year}">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-								  	<label>가사</label>
-									<textarea class="form-control" rows="4"></textarea>
-								</div>
+			</div>
+			<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+				<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+				<h3 class="mb-4">음악정보</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>가수</label>
+								<input type="text" class="form-control" th:value="${info.artist}">
 							</div>
 						</div>
-						<div>
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-light">Cancel</button>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>제목</label>
+								<input type="text" class="form-control" th:value="${info.title}">
+							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>앨범</label>
+								<input type="text" class="form-control" th:value="${info.album}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>장르</label>
+								<input type="text" class="form-control" th:value="${info.genre}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>발매연도</label>
+								<input type="text" class="form-control" th:value="${info.year}">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>가사</label>
+								<textarea class="form-control" rows="4"></textarea>
+							</div>
+						</div>
+					</div>
+					<div>
+						<button class="btn btn-primary">수정</button>
+						<button class="btn btn-light">취소</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-
+	</div>
+</section>
 </body>
 </html>
