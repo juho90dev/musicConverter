@@ -26,6 +26,7 @@ import com.jh.musicConverter.UpDown.model.service.UpDownService;
 import com.jh.musicConverter.model.service.ConverterService;
 import com.jh.musicConverter.model.vo.Music;
 import com.jh.musicConverter.model.vo.Users;
+import com.jh.musicConverter.musicList.model.service.MusicListService;
 
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,6 +40,9 @@ public class UpDownController {
 	
 	@Autowired
 	private UpDownService service;
+	
+	@Autowired
+	private MusicListService mservice;
 	
 	@GetMapping("/musicUpload")
 	public String musicUpload() {
@@ -58,7 +62,8 @@ public class UpDownController {
 		System.out.println("------------");
 		
 		
-		// String path = mtRequest.getServletContext().getRealPath("/resources/upload/test/");
+		// String path = "/home/dongheon/ftp/"+name+"/";
+		
 		String path = "C:\\musicTest\\";
 		File uploadPath = new File(path);
 		System.out.println(path);
@@ -94,76 +99,93 @@ public class UpDownController {
 		// System.out.println(music);
 
 		
-		service.insertFile(music);
+		// service.insertFile(music);
+		String msg="";
+		String loc="";
 		
-		return "redirect:/";
+		try {
+			service.insertFile(music);
+			msg = "mp3 업로드 완료!";
+			loc = "/musicUpload";
+		}catch(Exception e) {
+			msg = "mp3 업로드 실패!";
+			loc = "/musicUpload";
+			
+		}
+				
+		m.addAttribute("msg",msg);
+		m.addAttribute("loc",loc);
+		
+		return "common/msg";
+		//return "redirect:/";
 	}
 	
 	// 전체 음원 파일 리스트
-	@GetMapping("/fileList")
-	public String fileList(Model m) {
-		
-		List<Music> files = service.selectFile();
-		
-		m.addAttribute("file", service.selectFile());
-		return "list/fileList";
-	}
+//	@GetMapping("/fileList")
+//	public String fileList(Model m) {
+//		
+//		List<Music> files = service.selectFile();
+//		
+//		m.addAttribute("file", service.selectFile());
+//		return "list/fileList";
+//	}
 	
 	// 아빠 음원 파일 리스트
-	@GetMapping("/fatherList")
-	public String fatherList(Model m) {
-		String name ="father";
-		Users user = service.findUser(name);
-		List<Music> music = service.selectPersonal(user);
-		m.addAttribute("file", music);
-		return "list/fileList";
-	}
-	
-	// 엄마 음원 파일 리스트
-	@GetMapping("/motherList")
-	public String motherList(Model m) {
-		String name = "mother";
-		Users user = service.findUser(name);
-		List<Music> music = service.selectPersonal(user);
-		m.addAttribute("file", music);
-		return "list/fileList";
-	}
-	
-	// 형아 음원 파일 리스트
-	@GetMapping("/dongheonList")
-	public String dongheonList(Model m) {
-		String name = "dongheon";
-		Users user = service.findUser(name);
-		List<Music> music = service.selectPersonal(user);
-		m.addAttribute("file", music);
-		return "list/fileList";
-	}
-	
-	// 주호 음원 파일 리스트
-	@GetMapping("/juhoList")
-	public String juhoList(Model m) {
-		String name = "juho";
-		Users user = service.findUser(name);
-		List<Music> music = service.selectPersonal(user);
-		m.addAttribute("file",music);
-		return "list/fileList";
-		
-	}
+//	@GetMapping("/fatherList")
+//	public String fatherList(Model m) {
+//		String name ="father";
+//		Users user = service.findUser(name);
+//		List<Music> music = service.selectPersonal(user);
+//		m.addAttribute("file", music);
+//		return "list/fileList";
+//	}
+//	
+//	// 엄마 음원 파일 리스트
+//	@GetMapping("/motherList")
+//	public String motherList(Model m) {
+//		String name = "mother";
+//		Users user = service.findUser(name);
+//		List<Music> music = service.selectPersonal(user);
+//		m.addAttribute("file", music);
+//		return "list/fileList";
+//	}
+//	
+//	// 형아 음원 파일 리스트
+//	@GetMapping("/dongheonList")
+//	public String dongheonList(Model m) {
+//		String name = "dongheon";
+//		Users user = service.findUser(name);
+//		List<Music> music = service.selectPersonal(user);
+//		m.addAttribute("file", music);
+//		return "list/fileList";
+//	}
+//	
+//	// 주호 음원 파일 리스트
+//	@GetMapping("/juhoList")
+//	public String juhoList(Model m) {
+//		String name = "juho";
+//		Users user = service.findUser(name);
+//		List<Music> music = service.selectPersonal(user);
+//		m.addAttribute("file",music);
+//		return "list/fileList";
+//		
+//	}
 	
 	// 음원 정보
 	@GetMapping("/fileInfos")
 	public ModelAndView fileInfos(@RequestParam int id, ModelAndView mv) {
 		System.out.println(id);
-		Music info = service.findById(id);
+		Music info = mservice.findById(id);
 		mv.addObject("info", info);
 		mv.setViewName("add/musicInfo");
 		return mv;
 	}
 	
-	@GetMapping("/deleteFile")
+	// 음원&파일 삭제
+	@GetMapping("/deleteTests")
 	public String testDelete(@RequestParam int id, @RequestParam String name) {
 		System.out.println(id);
-		Music mu = service.findById(id);
+		Music mu = mservice.findById(id);
 		System.out.println(mu.getFilePath());
 		String df = mu.getFilePath();
 		String dt = mu.getTitle();
@@ -182,7 +204,9 @@ public class UpDownController {
 //    	}
 		return "redirect:/"+name+"List";
 	}
-	@PostMapping("/testDeleteP")
+	
+	// 음원&파일 삭제
+	@PostMapping("/deleteFile")
 	public String testDeleteP(@RequestParam int musicId, @RequestParam String name, @RequestParam String filePath) {
 		System.out.println(musicId);
 		System.out.println(name);
@@ -196,7 +220,7 @@ public class UpDownController {
 		}else{
 			System.out.println("파일이 존재하지 않습니다.");
 		}
-		service.deleteById(musicId);
+		mservice.deleteById(musicId);
 		return "redirect:/"+name+"List";
 	}
 	

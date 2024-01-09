@@ -11,9 +11,9 @@ public interface UpDownDao extends JpaRepository<Music, Integer>{
 	
 	Music save(Music m);
 	
-	Music findById(int id);
 	
-	Music deleteById(int id);
+	
+	
 	
 
 }
