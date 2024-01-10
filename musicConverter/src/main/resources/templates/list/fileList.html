@@ -6,8 +6,8 @@
 			<table id="tbl-board" class="tableStyle">
 				<thead>
 					<tr>
-						<th>가수</th>
-						<th>제목</th>
+						<th><a th:href="@{/artistAcs( name=${name} )}" th:text="가수"></a></th>
+						<th><a th:href="@{/titleAsc( name=${name} )}" th:text="제목"></th>
 						<th>첨부파일</th>
 						<th>삭제</th>
 					</tr>

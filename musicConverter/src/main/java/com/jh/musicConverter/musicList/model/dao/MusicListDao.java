@@ -15,13 +15,19 @@ public interface MusicListDao extends JpaRepository<Music, Integer>{
 	// 음원 전체
 	List<Music> findAllByOrderByArtistAsc();
 	
+	List<Music> findAllByOrderByTitleAsc();
+	
 	// 음원 검색
 	Music findById(int id);
 
 	Music findByArtistAndTitle(String artist, String title);
 	
-	// 개인 음원
+	// 개인 음원(가수로 정렬)
 	List<Music> findByNameOrderByArtistAsc(Users user);
+	
+	// 개인 음원(제목으로 정렬)
+	List<Music> findByNameOrderByTitleAsc(Users user);
+	
 	
 	// 음원 삭제
 	Music deleteById(int id);
