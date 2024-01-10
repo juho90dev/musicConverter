@@ -5,7 +5,7 @@ mp3변환 API를 활용하여 youtube영상을 mp3파일로 변환 후 저장.
 ### 사용 기술
 - java 17
 - Spring Boot 3.2.0
-  - maven
+  - maven project
 - Oracle Database
 - Thymeleaf
 
