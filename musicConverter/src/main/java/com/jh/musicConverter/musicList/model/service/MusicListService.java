@@ -10,8 +10,14 @@ public interface MusicListService {
 	// 파일 리스트
 	List<Music> selectFile();
 	
+	// 모든 파일 제목으로 정렬
+	List<Music> allTitleAsc();
+	
 	// 개인 리스트
 	List<Music> selectPersonal(Users user);
+	
+	// 제목으로 정렬
+	List<Music> selectTitleAsc(Users user);
 
 //	// 파일 선택
 //	Music selectFiles(String artist, String title);

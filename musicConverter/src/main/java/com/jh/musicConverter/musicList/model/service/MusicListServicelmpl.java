@@ -22,10 +22,19 @@ public class MusicListServicelmpl implements MusicListService {
 	}
 
 	@Override
+	public List<Music> allTitleAsc(){
+		return mdao.findAllByOrderByTitleAsc();
+	}
+	
+	@Override
 	public List<Music> selectPersonal(Users user) {
 		return mdao.findByNameOrderByArtistAsc(user);
 	}
 
+	public List<Music> selectTitleAsc(Users user){
+		return mdao.findByNameOrderByTitleAsc(user);
+	}
+	
 //	@Override
 //	public Music selectFiles(String artist, String title) {
 //		return mdao.findByArtistAndTitle(artist, title);
