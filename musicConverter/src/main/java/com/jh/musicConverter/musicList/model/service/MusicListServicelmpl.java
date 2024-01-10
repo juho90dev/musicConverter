@@ -23,13 +23,13 @@ public class MusicListServicelmpl implements MusicListService {
 
 	@Override
 	public List<Music> selectPersonal(Users user) {
-		return mdao.findByName(user);
+		return mdao.findByNameOrderByArtistAsc(user);
 	}
 
-	@Override
-	public Music selectFiles(String artist, String title) {
-		return mdao.findByArtistAndTitle(artist, title);
-	}
+//	@Override
+//	public Music selectFiles(String artist, String title) {
+//		return mdao.findByArtistAndTitle(artist, title);
+//	}
 
 	@Override
 	public Music findById(int id) {

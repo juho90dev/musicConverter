@@ -13,8 +13,8 @@ public interface MusicListService {
 	// 개인 리스트
 	List<Music> selectPersonal(Users user);
 
-	// 파일 선택
-	Music selectFiles(String artist, String title);
+//	// 파일 선택
+//	Music selectFiles(String artist, String title);
 	
 	// 음원 검색
 	Music findById(int id);

@@ -12,6 +12,7 @@ import com.jh.musicConverter.model.vo.Users;
 @Repository
 public interface MusicListDao extends JpaRepository<Music, Integer>{
 	
+	// 음원 전체
 	List<Music> findAllByOrderByArtistAsc();
 	
 	// 음원 검색
@@ -19,7 +20,8 @@ public interface MusicListDao extends JpaRepository<Music, Integer>{
 
 	Music findByArtistAndTitle(String artist, String title);
 	
-	List<Music> findByName(Users user);
+	// 개인 음원
+	List<Music> findByNameOrderByArtistAsc(Users user);
 	
 	// 음원 삭제
 	Music deleteById(int id);
