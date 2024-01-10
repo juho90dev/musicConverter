@@ -2,6 +2,21 @@
 <body style="background-color:white;">
 <section class="py-5 my-5">
 	<div class="container">
+<!-- 		<form action="/searchMusic" method="post" name="searchMusic">
+			<div class="input-group">
+				<div>
+					<select name="searchType" id="searchType" class="form-control">
+						<option value="none" disabled hidden selected>검색 유형</option>
+						<option value="searchArtist">가수</option>
+						<option value="searchTitle">제목</option>
+					</select>
+				</div>
+				<input id="keyword" name="keyword" type="text" placeholder="검색어를 입력하세요" class="form-control">
+				<div class="input-group-append">
+					<button type="submit" class="btn btn-primary" onclick="return check();">검색</button>
+				</div>
+			</div>
+		</form> -->
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 			<table id="tbl-board" class="tableStyle">
 				<thead>
@@ -32,7 +47,7 @@
 								<input type="hidden" id="filePath" name="filePath" th:value="${f.filePath}">
 								<input type="hidden" id="musicId" name="musicId" th:value="${f.musicId}">
 								<input type="hidden" id="name" name="name" th:value="${f.name.name}">
-								<button type="summit" class="btn btn-primary" onclick="return delFile();">삭제</button>
+								<button type="submit" class="btn btn-primary" onclick="return delFile();">삭제</button>
 							</td>
 						</form>
 					</tr>
@@ -50,6 +65,22 @@ function delFile(){
         return false;
     }
 }
+
+function check(){
+	if(searchMusic.keyword.value.length == 0 ){
+		alert("검색어를 적어주세요.");
+		searchMusic.keyword.focus();
+		return false;
+	}
+	var searchType = document.getElementById('searchType');
+	if(searchType.value == "none") {
+		alert("유형 선택해 주세요");
+		searchMusic.searchType.focus();
+		return false;
+	}
+}
+
+
 </script>
 
 
