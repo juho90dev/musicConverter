@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -83,7 +84,7 @@ public class MusicListController {
 		
 	}
 	
-	// 정렬 테스트
+	// 가수로 정렬
 	@GetMapping("/artistAcs")
 	public String listAcs(@RequestParam String name, Model m) {
 		System.out.println(name);
@@ -124,12 +125,13 @@ public class MusicListController {
 			m.addAttribute("name",name);
 		}
 		
-		
-		
-		
 		return "list/fileList";
 	}
 	
-	
+	@PostMapping("/searchMusic")
+	public String searchMusic(@RequestParam String keyword) {
+		System.out.println(keyword);
+		return "list/fileList";
+	}
 	
 }
