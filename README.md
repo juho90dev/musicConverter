@@ -1,5 +1,6 @@
 # musicConverter
-API를 활용한 음악 변환
+mp3변환 API를 활용하여 youtube영상을 mp3파일로 변환 후 저장.
+또한 저장된 mp3파일을 다운로드하여 재생이 가능
 
 ### 사용 기술
 - java 17
