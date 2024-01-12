@@ -171,15 +171,15 @@ public class UpDownController {
 //		
 //	}
 	
-	// 음원 정보
-	@GetMapping("/fileInfos")
-	public ModelAndView fileInfos(@RequestParam int id, ModelAndView mv) {
-		System.out.println(id);
-		Music info = mservice.findById(id);
-		mv.addObject("info", info);
-		mv.setViewName("add/musicInfo");
-		return mv;
-	}
+//	// 음원 정보
+//	@GetMapping("/fileInfos")
+//	public ModelAndView fileInfos(@RequestParam int id, ModelAndView mv) {
+//		System.out.println(id);
+//		Music info = mservice.findById(id);
+//		mv.addObject("info", info);
+//		mv.setViewName("add/musicInfo");
+//		return mv;
+//	}
 	
 	// 음원&파일 삭제
 	@GetMapping("/deleteTests")

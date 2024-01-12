@@ -6,61 +6,63 @@
 			<div class="profile-tab-nav border-right">
 				<div class="p-4">
 					<div class="img-circle text-center mb-3">
-						<span th:if="${info.albumCover != null}">
-							<img src="${info.albumCover}" alt="Image" class="shadow">
-						</span>
-						<span th:if="${info.albumCover == null}">
+						<span>
 							<img src="assets/img/image.png" alt="Image" class="shadow">
 						</span>
 					</div>
-					<h2 th:text="${info.artist}" style="text-align:center"></h2>
+					<!-- <h2 th:text="${info.artist}" style="text-align:center"></h2> -->
 				</div>
 			</div>
 			<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 				<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
 				<h3 class="mb-4">음악정보</h3>
+			<form action="/upTag" method="post" accept-charset="utf-8">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>가수</label>
-								<input type="text" class="form-control" th:value="${info.artist}">
+								<input type="text" id="artist" name="artist" class="form-control" th:value="${info?.artist}">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>제목</label>
-								<input type="text" class="form-control" th:value="${info.title}">
+								<input type="text" id="title" name="title" class="form-control" th:value="${info?.title}">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>앨범</label>
-								<input type="text" class="form-control" th:value="${info.album}">
+								<input type="text" id="album" name="album" class="form-control" >
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>장르</label>
-								<input type="text" class="form-control" th:value="${info.genre}">
+								<input type="text" id="genre" name="genre" class="form-control">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>발매연도</label>
-								<input type="text" class="form-control" th:value="${info.year}">
+								<input type="text" id="year" name="year" class="form-control">
 							</div>
-						</div>
+						</div> 
 						<div class="col-md-12">
 							<div class="form-group">
 								<label>가사</label>
-								<textarea class="form-control" rows="4"></textarea>
+								<textarea id="lylics" name="lylics" class="form-control" rows="4"></textarea>
 							</div>
+						</div>
+						<div>
+						<input type="hidden" id="name" name="name" th:value="${info.name.name}">
 						</div>
 					</div>
 					<div>
-						<button class="btn btn-primary">수정</button>
+						<button type="submit" class="btn btn-primary" >수정</button>
 						<button class="btn btn-light">취소</button>
 					</div>
+			</form>
 				</div>
 			</div>
 		</div>
