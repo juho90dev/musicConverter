@@ -39,7 +39,10 @@ public class UpDownServicelmpl implements UpDownService {
 	public Users findUser(String name) {
 		return cdao.findByName(name);
 	}
-
+//	@Override 
+//	public Music findById(int id) { 
+//		return mdao.findById(id); 
+//	}
 	/*
 	 * @Override public List<Music> selectFile() { return
 	 * mdao.findAllByOrderByArtistAsc(); }
@@ -50,7 +53,7 @@ public class UpDownServicelmpl implements UpDownService {
 	 * @Override public Music selectFiles(String artist, String title) { return
 	 * mdao.findByArtistAndTitle(artist, title); }
 	 * 
-	 * @Override public Music findById(int id) { return mdao.findById(id); }
+	 * 
 	 * 
 	 * @Override public Music deleteById(int id) { return mdao.deleteById(id); }
 	 */
