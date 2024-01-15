@@ -31,15 +31,13 @@ public class MusicTagController {
 		System.out.println(info.getGenre());
 		System.out.println(info.getYear());
 		System.out.println("-------------");
-//		mv.addObject("info", info);
-//		mv.setViewName("add/musicInfo");
 		mv.addAttribute("info",info);
 		return "add/musicInfo";
 	}
 	
 	@PostMapping("/upTag")
 	public String upTag(@RequestParam String genre,@RequestParam String title, @RequestParam String artist, @RequestParam String album, @RequestParam int year, @RequestParam String lylics,
-			@RequestParam String name, Model model) throws IOException{
+			@RequestParam String name,@RequestParam String filePath, Model model) throws IOException{
 	
 		System.out.println(artist);
 		System.out.println(title);
@@ -47,6 +45,7 @@ public class MusicTagController {
 		System.out.println(genre);
 		System.out.println(year);
 		System.out.println(lylics);
+		System.out.println(filePath);
 		
 		String msg="";
 		String loc="";
