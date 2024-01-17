@@ -2,6 +2,7 @@ package com.jh.musicConverter.musicTag.controller;
 
 import java.io.IOException;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ public class MusicTagController {
 	
 	@Autowired
 	private MusicTagService mservice;
+	
+
 	
 	// 음원 정보
 	@GetMapping("/fileInfos")
@@ -47,6 +50,8 @@ public class MusicTagController {
 		System.out.println(lylics);
 		System.out.println(filePath);
 		
+		
+		
 		String msg="";
 		String loc="";
 		
@@ -63,5 +68,5 @@ public class MusicTagController {
 		
 		return "common/msg";
 	}
-
+	
 }

@@ -54,9 +54,15 @@
 								<textarea id="lylics" name="lylics" class="form-control" rows="4"></textarea>
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							  	<label>앨범 표지</label>
+							  	<input type="file" name="img" class="form-control">
+							</div>
+						</div>
 						<div>
-						<input type="hidden" id="name" name="name" th:value="${info.name.name}">
-						<input type="hidden" id="filePath" name="filePath" th:value="${info.filePath}">
+							<input type="hidden" id="name" name="name" th:value="${info.name.name}">
+							<input type="hidden" id="filePath" name="filePath" th:value="${info.filePath}">
 						</div>
 					</div>
 					<div>
