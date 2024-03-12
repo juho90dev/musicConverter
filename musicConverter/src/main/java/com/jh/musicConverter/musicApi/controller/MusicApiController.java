@@ -103,7 +103,7 @@ public class MusicApiController {
 		System.out.println("------------");
 		
 		Users username = service.findUser(user); 
-		Music music =Music.builder().title(title).artist(artist).filePath(filePath).name(username).build();
+		Music music = Music.builder().title(title).artist(artist).filePath(filePath).name(username).build();
 		service.insertFile(music);
 		
 		
