@@ -62,9 +62,9 @@ public class UpDownController {
 		System.out.println("------------");
 		
 		
-		// String path = "/home/dongheon/ftp/"+name+"/";
+		String path = "/home/dongheon/ftp/"+name+"/";
 		
-		String path = "C:\\musicTest\\";
+		// String path = "C:\\musicTest\\";
 		File uploadPath = new File(path);
 		System.out.println(path);
 		// 디렉터리 자동 생성
