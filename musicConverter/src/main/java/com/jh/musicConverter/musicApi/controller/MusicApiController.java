@@ -90,6 +90,7 @@ public class MusicApiController {
 		rePath = result.toString();
 		rePath.replace("[^\\w']", "");
 		rePath = rePath.replaceAll("\"", "");
+		rePath = rePath.trim();
 		System.out.println("반환값 : "+result);
 		System.out.println("결과값 : "+rePath);
 		
@@ -102,21 +103,26 @@ public class MusicApiController {
 		System.out.println(filePath);
 		System.out.println("------------");
 		
-		Users username = service.findUser(user); 
-		Music music = Music.builder().title(title).artist(artist).filePath(filePath).name(username).build();
-		service.insertFile(music);
-		
-		
 		String msg="";
 		String loc="";
 		
-		try {
-			service.insertFile(music);
-			msg = "YOUTUBE 변환 완료!";
-			loc = "/index";
-		}catch(Exception e) {
+		if(filePath.equals("null")) {
 			msg = "YOUTUBE 변환 실패!";
 			loc = "/index";
+		}else {
+			Users username = service.findUser(user); 
+			Music music = Music.builder().title(title).artist(artist).filePath(filePath).name(username).build();
+			service.insertFile(music);
+			
+			try {
+				service.insertFile(music);
+				msg = "YOUTUBE 변환 완료!";
+				loc = "/index";
+			}catch(Exception e) {
+				msg = "YOUTUBE 변환 실패!";
+				loc = "/index";
+				
+			}
 			
 		}
 				
