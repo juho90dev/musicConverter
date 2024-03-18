@@ -2,21 +2,23 @@
 <body style="background-color:white;">
 <section class="py-5 my-5">
 	<div class="container">
-<!-- 		<form action="/searchMusic" method="post" name="searchMusic">
-			<div class="input-group">
-				<div>
-					<select name="searchType" id="searchType" class="form-control">
-						<option value="none" disabled hidden selected>검색 유형</option>
-						<option value="searchArtist">가수</option>
-						<option value="searchTitle">제목</option>
-					</select>
+		<!-- <div>
+			<form action="/searchMusic" method="post" name="searchMusic">
+				<div class="input-group">
+					<div>
+						<select name="searchType" id="searchType" class="form-control">
+							<option value="none" disabled hidden selected>검색 유형</option>
+							<option value="searchArtist">가수</option>
+							<option value="searchTitle">제목</option>
+						</select>
+					</div>
+					<input id="keyword" name="keyword" type="text" placeholder="검색어를 입력하세요" class="form-control">
+					<div>
+						<button type="submit" class="btn btn-primary" onclick="return check();">검색</button>
+					</div>
 				</div>
-				<input id="keyword" name="keyword" type="text" placeholder="검색어를 입력하세요" class="form-control">
-				<div class="input-group-append">
-					<button type="submit" class="btn btn-primary" onclick="return check();">검색</button>
-				</div>
-			</div>
-		</form> -->
+			</form>
+		</div> -->
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 			<table id="tbl-board" class="tableStyle">
 				<thead>
@@ -38,7 +40,7 @@
 								<input type="hidden" id="artist" name="artist" th:value="${f.artist}">
 								<input type="hidden" id="title" name="title" th:value="${f.title}">
 								<input type="hidden" id="filePath" name="filePath" th:value="${f.filePath}">
-								<button type="summit" class="btn btn-primary">다운로드</button>
+								<button type="submit" class="btn btn-primary">다운로드</button>
 							</td>
 						</form>
 						<form action="/deleteFile" method="post">
