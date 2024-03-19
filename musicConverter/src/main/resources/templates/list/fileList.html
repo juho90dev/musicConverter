@@ -2,7 +2,7 @@
 <body style="background-color:white;">
 <section class="py-5 my-5">
 	<div class="container">
-		<!-- <div>
+		<div>
 			<form action="/searchMusic" method="post" name="searchMusic">
 				<div class="input-group">
 					<div>
@@ -13,12 +13,13 @@
 						</select>
 					</div>
 					<input id="keyword" name="keyword" type="text" placeholder="검색어를 입력하세요" class="form-control">
+					<input type="hidden" id="name" name="name" th:value="${name}">
 					<div>
 						<button type="submit" class="btn btn-primary" onclick="return check();">검색</button>
 					</div>
 				</div>
 			</form>
-		</div> -->
+		</div>
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 			<table id="tbl-board" class="tableStyle">
 				<thead>

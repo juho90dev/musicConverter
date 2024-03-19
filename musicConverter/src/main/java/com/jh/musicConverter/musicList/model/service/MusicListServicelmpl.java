@@ -50,5 +50,27 @@ public class MusicListServicelmpl implements MusicListService {
 		// TODO Auto-generated method stub
 		return mdao.deleteById(id);
 	}
-
+	
+	@Override
+	public List<Music> searchArtist(String keyword, Users user) {
+		System.out.println(keyword);
+		return mdao.findByNameAndArtistContaining(user, keyword);
+	}
+	
+	@Override
+	public List<Music> searchArtistAll(String keyword){
+		return mdao.findByArtistContaining(keyword);
+	}
+	
+	@Override
+	public List<Music> searchTitleAll(String keyword){
+		return mdao.findByTitleContaining(keyword);
+	}
+	
+	@Override
+	public List<Music> searchTitle(String keyword, Users user) {
+		System.out.println(keyword);
+		return mdao.findByNameAndTitleContaining(user, keyword);
+	}
 }
+
