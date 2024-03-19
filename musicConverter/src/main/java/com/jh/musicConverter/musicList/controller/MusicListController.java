@@ -129,9 +129,44 @@ public class MusicListController {
 	}
 	
 	@PostMapping("/searchMusic")
-	public String searchMusic(@RequestParam String keyword) {
+	public String searchMusic(@RequestParam("searchType") String searchType, String keyword,@RequestParam String name, Model m) {
+		System.out.println(searchType);
 		System.out.println(keyword);
+		System.out.println(name);
+		if(searchType.equals("searchArtist")) {
+			// 가수 검색
+			if(name.equals("all")) {
+				System.out.println("전체");
+				List<Music> music = mservice.searchArtistAll(keyword);
+				m.addAttribute("file",music);
+				m.addAttribute("name",name);
+			}else {
+				Users user = service.findUser(name);
+				List<Music> music = mservice.searchArtist(keyword, user);
+				System.out.println(music);
+				
+				m.addAttribute("file", music);
+				m.addAttribute("name", name);
+				
+			}
+			
+		}else {
+			// 제목 검색
+			if(name.equals("all")) {
+				List<Music> music = mservice.searchTitleAll(keyword);
+				m.addAttribute("file", music);
+				m.addAttribute("name", name);
+			}else {
+				Users user = service.findUser(name);
+				List<Music> music = mservice.searchTitle(keyword, user);
+				m.addAttribute("file", music);
+				m.addAttribute("name", name);
+			}
+		}
 		return "list/fileList";
 	}
+
+	
+	
 	
 }
