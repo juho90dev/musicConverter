@@ -55,6 +55,7 @@ public class MusicConverterController {
 		System.out.println(album);
 		System.out.println(year);
 		System.out.println(lyric);
+		System.out.println("끝");
 		return "redirect:/";
 	}
 
