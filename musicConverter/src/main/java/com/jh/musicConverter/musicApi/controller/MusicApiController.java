@@ -1,12 +1,15 @@
 package com.jh.musicConverter.musicApi.controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -133,6 +136,49 @@ public class MusicApiController {
 		
 		
 		
+	}
+	
+	@PostMapping("/testDown")
+	public String testDown(Model model, @RequestParam("artist") String artist, @RequestParam("title") String title,
+			@RequestParam("youtube") String youtube, @RequestParam("user") String user) throws IOException{
+		
+		System.out.println(user);
+		System.out.println(artist);
+		System.out.println(title);
+		System.out.println(youtube);
+		
+		// 비디오 링크 주소
+        String videoUrl = youtube;
+ 
+        // 저장할 파일 주소+이름
+        String fileName = "C:\\musicTest\\"+artist+"-"+title+".mp4";
+ 
+        try {
+            
+            URL url = new URL(videoUrl);
+            URLConnection connection = url.openConnection();
+ 
+//            try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream());
+//                 FileOutputStream fileOutputStream = new FileOutputStream(fileName)) {
+            try (BufferedInputStream in = new BufferedInputStream(new URL(videoUrl).openStream());
+            		  FileOutputStream fileOutputStream = new FileOutputStream(fileName)) {
+ 
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+ 
+                while ((bytesRead = in.read(buffer, 0, 1024)) != -1) {
+                    fileOutputStream.write(buffer, 0, bytesRead);
+                }
+            }
+ 
+            System.out.println("영상 다운로드 성공");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+		
+		
+		return "test/testDown";
 	}
 	
 	// 유니코드 변환

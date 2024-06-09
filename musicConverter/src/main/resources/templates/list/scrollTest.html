@@ -1,6 +1,6 @@
 <div th:replace="common/header :: header"></div>
 <body style="background-color:white;">
-<section class="py-5 my-5">
+<section class="py-5 my-5" id="List-wrap">
 	<div class="container">
 		<div>
 			<form action="/searchMusic" method="post" name="searchMusic">
@@ -83,6 +83,43 @@ function check(){
 	}
 }
 
+// 무한 스크롤 도전..
+
+var curPage = 1; // 페이지 초기값
+var isLoading = false; // 현재 페이지가 로딩중인지 확인
+
+$(window).on("scroll",  function(){
+	var scrollTop = $(window).scrollTop(); // 위로 스크롤된 길이
+	var windowHeight = $(window).height(); // 웹브라우저의 창의 높이
+	var documentHeight = $(document).height(); // 문서 전체의 높이
+	var isBotton = scrollTop + windowHeight + 10 >= documentHeight; // 스크롤이 가장 밑으로 갔는지 확인
+	
+	if(isBottom){
+		// 현재 페이지가 마지막 페이지일 경우
+		if(curPage >= $(totalPage)) {
+			return false; // 함수를 종료
+		}else{
+			isloading = true;// 마지막 페이지가 아닐 경우 로딩상태를 true로 변경
+			$('#load').show(); // 로딩바 표시
+			curPage++;  //현재 페이지 증가
+			getList(curPage);// 추가로 받을 리스트 
+		}
+	}
+});
+
+function getList(curPage){
+	$.ajax({
+		type : "get",
+		url  : "${path}/scrollTests",
+		data : {"curPage" : curPage},
+		success : function(data){
+			// 서버에서 응답받은 데이터 list-wrap에 추가
+			$("List-wrap").append(data);
+			$("#load").hide(); // 로딩바 숨김
+			isLoading = false; // 로딩여부 변경
+		}
+	});
+}
 </script>
 
 

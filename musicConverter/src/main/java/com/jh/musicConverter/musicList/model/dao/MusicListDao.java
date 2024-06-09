@@ -42,4 +42,7 @@ public interface MusicListDao extends JpaRepository<Music, Integer>{
 
 	// 사용자별, 검색어가 포함된 제목 검색
 	List<Music> findByNameAndTitleContaining(Users user, String keyword);
+	
+	
+	int countBy();
 }

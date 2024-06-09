@@ -2,6 +2,7 @@ package com.jh.musicConverter.musicList.model.service;
 
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class MusicListServicelmpl implements MusicListService {
 	
 	@Autowired
 	private MusicListDao mdao;
+	
+	@Autowired
+	private SqlSessionTemplate session;
 	
 
 	@Override
@@ -71,6 +75,11 @@ public class MusicListServicelmpl implements MusicListService {
 	public List<Music> searchTitle(String keyword, Users user) {
 		System.out.println(keyword);
 		return mdao.findByNameAndTitleContaining(user, keyword);
+	}
+	
+	@Override
+	public int fileCount() {
+		return mdao.countBy();
 	}
 }
 
