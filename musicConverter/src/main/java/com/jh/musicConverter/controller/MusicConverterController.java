@@ -72,6 +72,10 @@ public class MusicConverterController {
 	public String testPage() {
 		return "test/testPage";
 	}
+	@GetMapping("/downTest")
+	public String testDown() {
+		return "test/testDown";
+	}
 
 	@GetMapping("/addUser")
 	public String mypage() {

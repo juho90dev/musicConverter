@@ -30,13 +30,6 @@ public class MusicTagController {
 	public String fileInfos(@RequestParam int id, Model mv) {
 		System.out.println(id);
 		Music info = mservice.findById(id);
-//		System.out.println("-------------");
-//		System.out.println(info.getArtist());
-//		System.out.println(info.getTitle());
-//		System.out.println(info.getAlbum());
-//		System.out.println(info.getGenre());
-//		System.out.println(info.getYear());
-//		System.out.println("-------------");
 		mv.addAttribute("info",info);
 		return "add/musicInfo";
 	}

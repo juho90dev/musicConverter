@@ -95,11 +95,7 @@ public class UpDownController {
 		
 		System.out.println(username.getName());
 		Music music = Music.builder().title(title).artist(artist).filePath(path+rename).name(service.findUser(name)).build();
-		
-		// System.out.println(music);
 
-		
-		// service.insertFile(music);
 		String msg="";
 		String loc="";
 		
@@ -117,7 +113,6 @@ public class UpDownController {
 		m.addAttribute("loc",loc);
 		
 		return "common/msg";
-		//return "redirect:/";
 	}
 
 	
@@ -140,7 +135,7 @@ public class UpDownController {
 		return "redirect:/"+name+"List";
 	}
 	
-	
+	// 파일 다운로드
 	@PostMapping("/fileDownload")
 	public void fileDownload(@RequestParam("artist") String artist,@RequestParam("title") String title, @RequestParam("filePath") String filePath, HttpServletResponse res, 
 			HttpServletRequest req, 

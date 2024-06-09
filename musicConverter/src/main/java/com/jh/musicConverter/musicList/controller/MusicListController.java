@@ -15,6 +15,10 @@ import com.jh.musicConverter.UpDown.model.service.UpDownService;
 import com.jh.musicConverter.model.vo.Music;
 import com.jh.musicConverter.model.vo.Users;
 import com.jh.musicConverter.musicList.model.service.MusicListService;
+import com.jh.musicConverter.util.Pager;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MusicListController {
@@ -36,6 +40,28 @@ public class MusicListController {
 		System.out.println(name);
 		return "list/fileList";
 	}
+	
+	// 스크롤 테스트
+	@GetMapping("/ScrollTest")
+	public String scrollTest() {
+		int count = mservice.fileCount();
+		System.out.println(count);
+		return "list/scrollTest";
+	}
+	
+	@GetMapping("/scrollTests")
+	public String scrollTests(HttpServletRequest request, HttpSession session) {
+		
+		
+		
+		
+		
+		return "list/scrollTest";
+	}
+	
+	
+	
+	
 	
 	// 아빠 음원 파일 리스트
 	@GetMapping("/fatherList")
@@ -88,15 +114,8 @@ public class MusicListController {
 	@GetMapping("/artistAcs")
 	public String listAcs(@RequestParam String name, Model m) {
 		System.out.println(name);
-//		Users user = service.findUser(name);
-//		List<Music> music = mservice.selectPersonal(user);
-//		m.addAttribute("file",music);
-//		m.addAttribute("user", user);
-//		m.addAttribute("name",name);
 		
 		if(name.equals("all")) {
-			System.out.println("allallall");
-			
 			m.addAttribute("file", mservice.selectFile());
 			m.addAttribute("name",name);
 		}else {
@@ -113,11 +132,9 @@ public class MusicListController {
 	public String listDesc(@RequestParam String name, Model m) {
 		
 		if(name.equals("all")){
-			
 			m.addAttribute("file", mservice.allTitleAsc());
 			m.addAttribute("name",name);
 		}else {
-			
 			Users user = service.findUser(name);
 			List<Music> music = mservice.selectTitleAsc(user);
 			System.out.println(name);

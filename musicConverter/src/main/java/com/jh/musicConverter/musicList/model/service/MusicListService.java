@@ -41,6 +41,9 @@ public interface MusicListService {
 	List<Music> searchTitleAll(String keyword);
 	
 	
+	// 전체 리스트 개수
+	int fileCount();
+	
 	
 	
 	
