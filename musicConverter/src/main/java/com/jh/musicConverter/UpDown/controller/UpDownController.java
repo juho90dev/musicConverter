@@ -144,6 +144,8 @@ public class UpDownController {
 		System.out.println(artist);
 		System.out.println(title);
 		System.out.println(filePath);
+		System.out.println("=----------");
+		System.out.println(new File(filePath).getAbsolutePath());
 		System.out.println("----------");
 		
 
@@ -151,8 +153,9 @@ public class UpDownController {
 		
 		System.out.println("test 파일경로 : " + filePath);
 		File saveFile = new File(filePath);
+		System.out.println(saveFile);
 		String rename = artist+"-"+title+".mp3";
-		try(BufferedInputStream bis = new BufferedInputStream(new FileInputStream(saveFile));
+		try(BufferedInputStream bis = new BufferedInputStream(new FileInputStream(filePath));
 				ServletOutputStream sos = res.getOutputStream();){
 			boolean isMS = header.contains("Trident")||header.contains("MSIE");
 			

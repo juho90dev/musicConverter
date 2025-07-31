@@ -60,7 +60,7 @@ public class MusicApiController {
 		String eTitle = URLEncoder.encode(title, "UTF-8");
 		StringBuilder result = new StringBuilder();
 		
-		String urlStr = "http://juhohome.iptime.org:9991/api/mp3?"+"user="+user+"&url="+youtube+"&title="+eTitle+"&artist="+eArtist;
+		String urlStr = "http://localhost:9090/api/mp3?"+"user="+user+"&url="+youtube+"&title="+eTitle+"&artist="+eArtist;
 		
 		System.out.println(urlStr);
 		
@@ -99,6 +99,7 @@ public class MusicApiController {
 		
 		// 유니코드 변환
 		String filePath = convertString(rePath);
+		System.out.println("test입니다");
 		System.out.println(filePath);
 		System.out.println("------------");
 		filePath = filePath.stripTrailing();
