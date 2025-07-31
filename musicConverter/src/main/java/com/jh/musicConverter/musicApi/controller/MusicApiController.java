@@ -59,7 +59,7 @@ public class MusicApiController {
 		String eArtist = URLEncoder.encode(artist, "UTF-8");
 		String eTitle = URLEncoder.encode(title, "UTF-8");
 		StringBuilder result = new StringBuilder();
-		
+		 
 		String urlStr = "http://localhost:9090/api/mp3?"+"user="+user+"&url="+youtube+"&title="+eTitle+"&artist="+eArtist;
 		
 		System.out.println(urlStr);
