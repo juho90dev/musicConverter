@@ -11,7 +11,7 @@ server:
   
 spring:
   datasource:
-    url: jdbc:oracle:thin:@juhohome.iptime.org:1521:xe
+    url: jdbc:oracle:thin:@localhost:1521:xe
     driver-class-name: oracle.jdbc.driver.OracleDriver
     username: juho
     password: 1234
