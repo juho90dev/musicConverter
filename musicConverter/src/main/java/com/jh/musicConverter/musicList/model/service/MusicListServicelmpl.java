@@ -58,23 +58,23 @@ public class MusicListServicelmpl implements MusicListService {
 	@Override
 	public List<Music> searchArtist(String keyword, Users user) {
 		System.out.println(keyword);
-		return mdao.findByNameAndArtistContaining(user, keyword);
+		return mdao.findByNameAndArtistContainingIgnoreCase(user, keyword);
 	}
 	
 	@Override
 	public List<Music> searchArtistAll(String keyword){
-		return mdao.findByArtistContaining(keyword);
+		return mdao.findByArtistContainingIgnoreCase(keyword);
 	}
 	
 	@Override
 	public List<Music> searchTitleAll(String keyword){
-		return mdao.findByTitleContaining(keyword);
+		return mdao.findByTitleContainingIgnoreCase(keyword);
 	}
 	
 	@Override
 	public List<Music> searchTitle(String keyword, Users user) {
 		System.out.println(keyword);
-		return mdao.findByNameAndTitleContaining(user, keyword);
+		return mdao.findByNameAndTitleContainingIgnoreCase(user, keyword);
 	}
 	
 	@Override

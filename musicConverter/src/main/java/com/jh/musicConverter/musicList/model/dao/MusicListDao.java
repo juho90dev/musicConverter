@@ -32,16 +32,18 @@ public interface MusicListDao extends JpaRepository<Music, Integer>{
 	// 음원 삭제
 	Music deleteById(int id);
 	
-	// 검색어가 포함된 가수 검색
-	List<Music> findByNameAndArtistContaining(Users user, String keyword);
-	// 검색어가 포함된 가수 
-	List<Music> findByArtistContaining(String keyword);
+	// 사용자별/검색어가 포함된 가수 검색
+	List<Music> findByNameAndArtistContainingIgnoreCase(Users user, String keyword);
+	
+	// 사용자별, 검색어가 포함된 제목 검색
+	List<Music> findByNameAndTitleContainingIgnoreCase(Users user, String keyword);
+	
+	// 전체, 검색어가 포함된 가수 
+	List<Music> findByArtistContainingIgnoreCase(String keyword);
 	
 	// 전체, 검색어가 포함된 제목 검색
-	List<Music> findByTitleContaining(String keyword);
+	List<Music> findByTitleContainingIgnoreCase(String keyword);
 
-	// 사용자별, 검색어가 포함된 제목 검색
-	List<Music> findByNameAndTitleContaining(Users user, String keyword);
 	
 	
 	int countBy();

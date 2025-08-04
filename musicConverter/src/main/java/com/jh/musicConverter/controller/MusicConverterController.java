@@ -77,6 +77,10 @@ public class MusicConverterController {
 	public String testDown() {
 		return "test/testDown";
 	}
+	@GetMapping("/tagUpload")
+	public String musicInfo() {
+		return "add/tagUpload";
+	}
 
 	@GetMapping("/addUser")
 	public String mypage() {

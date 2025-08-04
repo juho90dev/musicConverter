@@ -59,8 +59,8 @@ public class MusicApiController {
 		String eArtist = URLEncoder.encode(artist, "UTF-8");
 		String eTitle = URLEncoder.encode(title, "UTF-8");
 		StringBuilder result = new StringBuilder();
-		  
-		String urlStr = "http://localhost:9090/api/mp3?"+"user="+user+"&url="+youtube+"&title="+eTitle+"&artist="+eArtist;
+		
+		String urlStr = "http://juhohome.iptime.org:9991/api/mp3?"+"user="+user+"&url="+youtube+"&title="+eTitle+"&artist="+eArtist;
 		
 		System.out.println(urlStr);
 		
@@ -172,7 +172,7 @@ public class MusicApiController {
                 }
             }
  
-            System.out.println("영상 다운로드 성공");
+            System.out.println("음원 다운로드 성공");
         } catch (IOException e) {
             e.printStackTrace();
         }
