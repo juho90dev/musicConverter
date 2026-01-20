@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jh.musicConverter.model.vo.Music;
 import com.jh.musicConverter.musicTag.model.service.MusicTagService;
 
+
 @Controller
 public class MusicTagController {
 	
@@ -139,11 +140,21 @@ public class MusicTagController {
 
 	
 	@PostMapping("/upTagTest")
-	public String upTagTest(@RequestParam String genre,@RequestParam String title, @RequestParam String artist, @RequestParam String album, @RequestParam String year, @RequestParam String lylics,
-			@RequestParam String name,@RequestParam MultipartFile file, @RequestParam MultipartFile musicPath, Model model, MultipartHttpServletRequest mtRequest) throws IOException{
+	public String upTagTest(
+			@RequestParam String artist, // 가수
+			@RequestParam String title, // 제목
+			@RequestParam String genre, // 장르
+			@RequestParam String album, // 앨범명
+			@RequestParam String year, // 발매연도
+			@RequestParam String lylics, // 가사
+			@RequestParam String name, // 사용자
+			@RequestParam MultipartFile musicPath, // 음악파일
+			@RequestParam MultipartFile file, // 사진파일
+			Model model,
+			MultipartHttpServletRequest mtRequest) throws IOException{
 	
 		MultipartFile mFile = mtRequest.getFile("file");
-		String path ="C:\\musicTest\\cover\\";
+		String path ="C:\\Users\\juho\\Desktop\\musicTest\\cover\\";
 		
 		System.out.println("--------------");
 		System.out.println("가수 : " + artist);
@@ -163,26 +174,28 @@ public class MusicTagController {
 		String cImage = "";
 		String ext = "";
 		String image = "";
-		String testFile = "C:\\musicTest\\"+musicPath.getOriginalFilename();
+		String testFile = "C:\\Users\\juho\\Desktop\\musicTest\\"+musicPath.getOriginalFilename();
 		
 		File mp3File = new File(testFile);
 		if(!mp3File.exists()) {
 			System.out.println("파일이 존재하지 않습니다." + testFile);
 		}
 		try {
-			AudioFile audiFile = AudioFileIO.read(mp3File);
-			Tag tag = audiFile.getTag();
+			AudioFile audioFile = AudioFileIO.read(mp3File);
+			Tag tag = audioFile.getTag();
 			if(tag == null) {
 				System.out.println("태그를 찾을 수 없습니다." + testFile);
 				tag = new ID3v24Tag();
-				audiFile.setTag(tag);
+				audioFile.setTag(tag);
 			}
 			tag.setField(org.jaudiotagger.tag.FieldKey.TITLE, title);
 			tag.setField(org.jaudiotagger.tag.FieldKey.ARTIST, artist);
 			tag.setField(org.jaudiotagger.tag.FieldKey.ALBUM, album);
-			tag.setField(org.jaudiotagger.tag.FieldKey.LYRICIST, lylics);
+			tag.setField(org.jaudiotagger.tag.FieldKey.LYRICS, lylics);
 			tag.setField(org.jaudiotagger.tag.FieldKey.GENRE, genre);
+			tag.deleteField(org.jaudiotagger.tag.FieldKey.YEAR);
 			tag.setField(org.jaudiotagger.tag.FieldKey.YEAR,year);
+			tag.deleteField(org.jaudiotagger.tag.FieldKey.COVER_ART);
 			//tag.setField(org.jaudiotagger.tag.FieldKey.COVER_ART, image);
 			 if (file != null && !file.isEmpty()) {
 		            File tempFile = null;
@@ -220,7 +233,7 @@ public class MusicTagController {
 		            }
 		        }
 			
-			AudioFileIO.write(audiFile);
+			AudioFileIO.write(audioFile);
 		} catch (org.jaudiotagger.audio.exceptions.CannotWriteException e) {
 	        // 가장 구체적인 예외를 먼저 처리
 	        System.err.println("파일 쓰기 오류: 쓰기 권한이 없거나 파일이 잠겨있을 수 있습니다.");
@@ -275,7 +288,7 @@ public class MusicTagController {
 	}
 	
 	
-	
+
 
 	
 	

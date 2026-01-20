@@ -97,6 +97,22 @@
     		<version>3.0.1</version>
 		</dependency>
 		
+		<dependency>
+		    <groupId>ws.schild</groupId>
+		    <artifactId>jave-core</artifactId>
+		    <version>3.5.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>ws.schild</groupId>
+		    <artifactId>jave-nativebin-win64</artifactId>
+		    <version>3.5.0</version>
+		</dependency>
+		
+		<!-- 엘라스틱 서치 의존성 추가-->
+		<dependency>
+    		<groupId>org.springframework.data</groupId>
+    		<artifactId>spring-data-elasticsearch</artifactId>
+		</dependency> 
 		
 	</dependencies>
 	<build>

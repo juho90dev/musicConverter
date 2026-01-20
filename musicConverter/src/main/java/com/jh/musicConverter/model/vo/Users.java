@@ -25,5 +25,17 @@ public class Users {
 	private int userId;
 	
 	private String name;
+	
+	// 카카오에서 주는 고유 번호 (예: 4646211781)
+	private String kakaoId; 
+	
+	// 실제 카카오 닉네임
+    private String nickname;
+    // 카카오 이메일
+    private String email;
+    
+    // 권한 (예: ROLE_FAMILY) 
+    private String role;     
+    
 
 }

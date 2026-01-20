@@ -68,7 +68,7 @@ public class UpDownController {
 		File uploadPath = new File(path);
 		System.out.println(path);
 		// 디렉터리 자동 생성
-		if(!uploadPath.exists()) uploadPath.mkdirs();
+		// if(!uploadPath.exists()) uploadPath.mkdirs();
 		
 		String oriFileName = "";
 		String ext = "";
